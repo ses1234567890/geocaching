@@ -7,12 +7,6 @@ cache_found = db.Table('cache_found',
     db.Column('cache_id', db.Integer, db.ForeignKey('cache.id'), primary_key=True)
 )
 
-favorite_items = db.Table('favorite',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('cache_id', db.Integer, db.ForeignKey('cache.id'), primary_key=True),
-    db.Column('blog_id', db.Integer, db.ForeignKey('blog.id'), primary_key=True)
-)
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     is_admin = db.Column(db.Boolean, nullable=False, default=False)
@@ -27,12 +21,9 @@ class User(db.Model):
     twitter = db.Column(db.String(255))
     active = db.Column(db.Boolean, nullable=False, default=True)
     password_hash = db.Column(db.String(255), nullable=False)
-    # favorites = db.relationship('Favorite')
-    blogs = db.relationship('Blog')
+    blogs = db.relationship('Blog', backref='blog_creator')
     caches_found = db.relationship('Cache', secondary=cache_found, backref=db.backref('users_found'))
-    favorite_cache = db.relationship('Cache', secondary=favorite_items, backref=db.backref('favorite_items'))
-    favorite_blog = db.relationship('Blog', secondary=favorite_items, backref=db.backref('favorite_items'))
-    cache_created = db.relationship('Cache', backref='user_creator')
+    caches = db.relationship('Cache', backref='user_creator')
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -74,10 +65,12 @@ class Image(db.Model):
 #     cache = db.relationship('Cache', foreign_keys=[cache_id], backref='comments')
 #     user = db.relationship('User', foreign_keys=[user_id], backref='comments')
 
-# class Favorite(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     cache_id = db.Column(db.Integer, db.ForeignKey('cache.id'), nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)
-      
+class Favorite(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cache_id = db.Column(db.Integer, db.ForeignKey('cache.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'))
+    cache = db.relationship('Cache')
+    user = db.relationship('User')
+    blog = db.relationship('Blog')
    
