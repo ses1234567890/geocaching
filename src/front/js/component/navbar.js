@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <div className="container-fluid">
@@ -34,37 +37,51 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="row me-1">
-          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="col btn btn-outline-success">
-            Iniciar sesión
-          </button>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar sesion</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+        <div className="container">
+          <div
+            className="btn-toolbar"
+            role="toolbar"
+            aria-label="Toolbar with button groups"
+          >
+            {store.userActive ? (
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={async () => {
+                  if (await actions.logout()) {
+                    navigate("/");
+                  }
+                }}
+              >
+                Logout
+              </button>
+            ) : (
+              <>
+                <div
+                  className="btn-group me-2"
+                  role="group"
+                  aria-label="First group"
+                >
+                  <Link to="/login">
+                    <button type="button" className="btn btn-primary">
+                      Login
+                    </button>
+                  </Link>
                 </div>
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Usuario:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add the caption of your post here"></textarea>
-                  </div>
-                  <button class="btn border-secondary" type="button"><i class="fa-solid fa-camera"></i></button>
-                  <button class="btn border-secondary" type="button"><i class="fa-solid fa-location-dot"></i></button>
+                <div
+                  className="btn-group me-2"
+                  role="group"
+                  aria-label="Second group"
+                >
+                  <Link to="/register">
+                    <button type="button" className="btn btn-success">
+                      Register
+                    </button>
+                  </Link>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-success">Publish</button>
-                </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
-          <button type="button" className="col btn btn-outline-danger">
-            Registrarse
-          </button>
         </div>
       </div>
     </nav>

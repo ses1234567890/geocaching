@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5cea0e2eed08
+Revision ID: 4423b864c19d
 Revises: 
-Create Date: 2023-02-05 09:42:33.254510
+Create Date: 2023-02-10 15:37:55.336995
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5cea0e2eed08'
+revision = '4423b864c19d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,17 +21,16 @@ def upgrade():
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('is_admin', sa.Boolean(), nullable=False),
-    sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('date_of_birth', sa.Date(), nullable=False),
-    sa.Column('country', sa.String(length=255), nullable=False),
-    sa.Column('city', sa.String(length=255), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=True),
+    sa.Column('date_of_birth', sa.Date(), nullable=True),
+    sa.Column('country', sa.String(length=255), nullable=True),
+    sa.Column('city', sa.String(length=255), nullable=True),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('images', sa.String(length=255), nullable=False),
+    sa.Column('images', sa.String(length=255), nullable=True),
     sa.Column('ig', sa.String(length=255), nullable=True),
     sa.Column('fb', sa.String(length=255), nullable=True),
     sa.Column('twitter', sa.String(length=255), nullable=True),
-    sa.Column('active', sa.Boolean(), nullable=False),
-    sa.Column('password_hash', sa.String(length=255), nullable=False),
+    sa.Column('password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
