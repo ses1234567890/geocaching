@@ -49,6 +49,19 @@ class Cache(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     # favorites = db.relationship('Favorite')
     images = db.relationship('Image')
+    def serialize(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "country": self.country,
+            "city": self.city,
+            "postal_code": self.postal_code,
+            "coordinates_y": self.coordinates_y,
+            "coordinates_x": self.coordinates_x,
+            "size": self.size,
+            "qr_url": self.qr_url,
+            "owner_id": self.owner_id,
+        }
 
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
