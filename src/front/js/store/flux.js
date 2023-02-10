@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			validateUser: async () => {
 				const response = await fetch(
-					"https://3001-ses123456789-geocaching-msv8zj2lcnl.ws-eu85.gitpod.io/api/user",
+					process.env.BACKEND_URL + "/api/user",
 					{
 						headers: {
 							Authorization: "Bearer " + localStorage.getItem("token"),

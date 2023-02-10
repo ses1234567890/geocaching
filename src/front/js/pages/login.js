@@ -11,7 +11,7 @@ export const Login = () => {
 
     const sendLoginCredential = async () => {
         const response = await fetch(
-            "https://3001-ses123456789-geocaching-msv8zj2lcnl.ws-eu85.gitpod.io/api/login",
+            process.env.BACKEND_URL + "/api/login",
             {
                 method: "POST",
                 headers: {

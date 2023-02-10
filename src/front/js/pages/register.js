@@ -11,7 +11,7 @@ export const Register = () => {
 
 	const sendRegisterCredential = async () => {
 		const response = await fetch(
-			"https://3001-ses123456789-geocaching-msv8zj2lcnl.ws-eu85.gitpod.io/api/register",
+			process.env.BACKEND_URL + "/api/register",
 			{
 				method: "POST",
 				headers: {
