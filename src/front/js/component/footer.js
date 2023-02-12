@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 export const Footer = () => (
-  <footer className="text-center text-lg-start bg-white text-muted">
-    <section className="">
+  <footer className="text-center text-lg-start bg-white text-muted ">
+    <section className="alert alert-secondary">
       <div className="container text-center text-md-start mt-5">
         <div className="row mt-3">
           <div className="col-3  mx-auto mb-4">
@@ -19,7 +19,7 @@ export const Footer = () => (
             </div>
 
           </div>
-          <div className="col-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <div className="col-3 col-lg-2 col-xl-2 mx-auto mb-4 alert alert-secondary">
             <div className="row">
               <h6 className="text-uppercase fw-bold mb-4">Sobre Geocahing</h6>
             </div>
