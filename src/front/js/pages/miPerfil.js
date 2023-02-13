@@ -15,7 +15,7 @@ export const MiPerfil = () => {
     const [showDiv5, setShowDiv5] = useState(false);
 
     const mostrarDatosPersonales = () => {
-        setShowDiv1(true);
+        setShowDiv1(!showDiv1);
         setShowDiv2(false);
         setShowDiv3(false);
         setShowDiv4(false);
@@ -24,7 +24,7 @@ export const MiPerfil = () => {
 
     const mostrarcachesPropios = () => {
         setShowDiv1(false);
-        setShowDiv2(true);
+        setShowDiv2(!showDiv2);
         setShowDiv3(false);
         setShowDiv4(false);
         setShowDiv5(false);
@@ -33,7 +33,7 @@ export const MiPerfil = () => {
     const mostrarcachesEncontrados = () => {
         setShowDiv1(false);
         setShowDiv2(false);
-        setShowDiv3(true);
+        setShowDiv3(!showDiv3);
         setShowDiv4(false);
         setShowDiv5(false);
     };
@@ -43,7 +43,7 @@ export const MiPerfil = () => {
         setShowDiv1(false);
         setShowDiv2(false);
         setShowDiv3(false);
-        setShowDiv4(true);
+        setShowDiv4(!showDiv4);
         setShowDiv5(false);
     };
 
@@ -52,22 +52,22 @@ export const MiPerfil = () => {
         setShowDiv2(false);
         setShowDiv3(false);
         setShowDiv4(false);
-        setShowDiv5(true);
+        setShowDiv5(!showDiv5);
     };
 
     return (
         <div className="container mb-5">
-            <h1 className="mb-5">GeoCaching - My Profile</h1>
+            <h1 className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "mb-5" : "text-center mb-5"}`}>GeoCaching - My Profile</h1>
             <div className=" row">
 
-                <div className="col-4 d-flex flex-column">
-                
-                    
-                    <button onClick={mostrarDatosPersonales}>Datos Personales </button>
-                    <button onClick={mostrarcachesPropios}> Cachés Registrados </button>
-                    <button onClick={mostrarcachesEncontrados}> Cachés Encontrados </button>
-                    <button onClick={mostrarCachesFavoritos}> Cachés Favoritos </button>
-                    <button onClick={mostrarPostsFavoritos}> Posts Favoritos </button>
+                <div className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "col-4" : "col-12"} d-flex flex-column`}>
+
+
+                    <button className={`${showDiv1 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarDatosPersonales}>Datos Personales </button>
+                    <button className={`${showDiv2 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarcachesPropios}> Cachés Registrados </button>
+                    <button className={`${showDiv3 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarcachesEncontrados}> Cachés Encontrados </button>
+                    <button className={`${showDiv4 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarCachesFavoritos}> Cachés Favoritos </button>
+                    <button className={`${showDiv5 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarPostsFavoritos}> Posts Favoritos </button>
                 </div>
 
                 <div className="col-8">
@@ -75,7 +75,7 @@ export const MiPerfil = () => {
                     {showDiv1 ? (
                         <div>
                             <div>
-                            <h2 className="text-center mb-5">Perfil</h2>
+                                <h2 className="text-center mb-5">Perfil</h2>
                             </div>
                             <div className="d-flex align-items-end ">
                                 <img src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg" class="img-thumbnail w-25" alt="..." />
