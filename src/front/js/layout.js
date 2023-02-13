@@ -5,7 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
-import { Cache } from "./pages/reg_cache"
+import { Cache } from "./pages/regCache"
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";

@@ -24,6 +24,7 @@ export const Cache = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
                 },
                 body: JSON.stringify({
                     name: name,
@@ -36,7 +37,6 @@ export const Cache = () => {
                     difficulty: difficulty,
                     size: size,
                     qr_url: qrURL,
-                    owner_id: store.user.id,
                 }),
             }
         );

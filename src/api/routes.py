@@ -56,7 +56,9 @@ def user_register():
     return jsonify({"response": "User registered successfully"}), 200   
 
 @api.route('/reg_cache', methods=['POST'])
+@jwt_required()
 def cache_register():
+    user_id = get_jwt_identity()
     body_name = request.json.get("name")
     body_description = request.json.get("description")
     body_country = request.json.get("country")
@@ -81,6 +83,7 @@ def cache_register():
         difficulty=body_difficulty,
         size=body_size,
         qr_url=body_qr_url,
+        owner_id=user_id,
         )
     db.session.add(new_cache)
     db.session.commit()
