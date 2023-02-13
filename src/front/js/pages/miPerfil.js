@@ -63,11 +63,11 @@ export const MiPerfil = () => {
                 <div className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "col-4" : "col-12"} d-flex flex-column`}>
 
 
-                    <button className={`${showDiv1 ? "w-auto bg-primary text-white" : "w-50 mx-auto"}`} onClick={mostrarDatosPersonales}>Datos Personales </button>
-                    <button className={`${showDiv2 ? "w-100 bg-primary text-white" : "w-50 mx-auto"}`} onClick={mostrarcachesPropios}> Cachés Registrados </button>
-                    <button className={`${showDiv3 ? "w-100 bg-primary text-white" : "w-50 mx-auto"}`} onClick={mostrarcachesEncontrados}> Cachés Encontrados </button>
-                    <button className={`${showDiv4 ? "w-100 bg-primary text-white" : "w-50 mx-auto"}`} onClick={mostrarCachesFavoritos}> Cachés Favoritos </button>
-                    <button className={`${showDiv5 ? "w-100 bg-primary text-white" : "w-50 mx-auto"}`} onClick={mostrarPostsFavoritos}> Posts Favoritos </button>
+                    <button className={`${showDiv1 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarDatosPersonales}>Datos Personales </button>
+                    <button className={`${showDiv2 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarcachesPropios}> Cachés Registrados </button>
+                    <button className={`${showDiv3 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarcachesEncontrados}> Cachés Encontrados </button>
+                    <button className={`${showDiv4 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarCachesFavoritos}> Cachés Favoritos </button>
+                    <button className={`${showDiv5 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"}`} onClick={mostrarPostsFavoritos}> Posts Favoritos </button>
                 </div>
 
                 <div className="col-8">
