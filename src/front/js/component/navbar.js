@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const { store, actions } = useContext(Context);
   return (
     <nav className="navbar navbar-expand-lg navbar-light alert alert-dark">
