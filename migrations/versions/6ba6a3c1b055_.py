@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 97c39d53ceb6
+Revision ID: 6ba6a3c1b055
 Revises: 
-Create Date: 2023-02-10 18:47:52.944597
+Create Date: 2023-02-15 18:54:16.797483
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '97c39d53ceb6'
+revision = '6ba6a3c1b055'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,10 +52,10 @@ def upgrade():
     sa.Column('country', sa.String(length=255), nullable=False),
     sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('postal_code', sa.String(length=255), nullable=False),
-    sa.Column('coordinates_y', sa.Float(), nullable=False),
-    sa.Column('coordinates_x', sa.Float(), nullable=False),
-    sa.Column('difficulty', sa.Float(), nullable=False),
-    sa.Column('size', sa.Float(), nullable=False),
+    sa.Column('coordinates_y', sa.Float(), nullable=True),
+    sa.Column('coordinates_x', sa.Float(), nullable=True),
+    sa.Column('difficulty', sa.String(length=255), nullable=False),
+    sa.Column('size', sa.String(length=255), nullable=False),
     sa.Column('qr_url', sa.String(length=255), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['user.id'], ),
