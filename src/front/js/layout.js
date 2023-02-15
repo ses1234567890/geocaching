@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { Cache } from "./pages/regCache"
 import { Demo } from "./pages/demo";
 import { MiPerfil } from "./pages/miPerfil";
 import { PerfilCache } from "./pages/perfilCache";
@@ -31,6 +32,7 @@ const Layout = () => {
             <Route element={<PerfilCache />} path="/perfil-cache" />
             <Route element={<MiPerfil />} path="/mi-Perfil" />
             <Route element={<Register />} path="/register" />
+            <Route element={<Cache />} path="/reg_cache" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
