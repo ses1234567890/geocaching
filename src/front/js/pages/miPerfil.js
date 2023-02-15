@@ -81,7 +81,7 @@ export const MiPerfil = () => {
                                 <img src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg" class="img-thumbnail w-25" alt="..." />
                                 <div className="m-3">
                                     <p>Puede cargar un archivo JPG, GIF o PNG. El límite de tamaño de archivo es de 4 MB.</p>
-                                    <button className="mb-3 bg-danger text-white ">Subir Foto </button>
+                                    <button className="mb-3 btn btn-danger btn-sm">Subir Foto </button>
                                 </div>
                             </div>
                             <label for="exampleFormControlInput1" class="form-label mt-3">Nombre</label>
@@ -97,7 +97,7 @@ export const MiPerfil = () => {
                             <label for="exampleFormControlInput1" class="form-label mt-3">Ciudad</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ciudad" />
                             <div class="d-flex justify-content-end">
-                                <button className="mb-5 mt-5 bg-danger text-white">Guardar Cambios </button>
+                                <button className="mb-5 mt-5 btn btn-danger btn-sm">Guardar Cambios </button>
                             </div>
                         </div>
                     ) : null}
@@ -125,7 +125,7 @@ export const MiPerfil = () => {
                     {showDiv4 ? (
                         <div>
                             <h2 className="text-center mb-5">Mi Cachés Favoritos</h2>
-                            <Cluster classboton="btn btn-danger btn-smbtn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 1" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
+                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 1" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
                             <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 2" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
                             <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 3" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
                             <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 4" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
@@ -136,11 +136,11 @@ export const MiPerfil = () => {
                     {showDiv5 ? (
                         <div>
                             <h2 className="text-center mb-5">Mi Posts Favoritoss</h2>
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 1" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 2" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 3" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 4" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 5" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
+                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 1" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
+                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 2" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
+                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 3" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
+                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 4" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
+                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 5" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
 
                         </div>
                     ) : null}
