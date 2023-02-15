@@ -67,6 +67,7 @@ def cache_register():
     body_coordinates_y = request.json.get("coordinates_y")
     body_coordinates_x = request.json.get("coordinates_x")
     body_difficulty = request.json.get("difficulty")
+    print (type(body_difficulty))
     body_size = request.json.get("size")
     body_qr_url = request.json.get("qr_url")
     cache_already_exist = Cache.query.filter_by(name= body_name).first()
