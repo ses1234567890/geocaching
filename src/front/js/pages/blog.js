@@ -14,8 +14,8 @@ export const Blog = () => {
     return (
 
         <div>
-            <div class="card text-bg-dark">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Wetterstein_mountains_banner.jpg" class="card-img" alt="..." />
+            <div class="card text-bg-dark ">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Wetterstein_mountains_banner.jpg" class="card-img " alt="..." />
                 <div class="card-img-overlay align-items-center d-flex">
                     <form class="w-50 m-auto p-0" role="search">
                         <div class="d-flex justify-content-center">

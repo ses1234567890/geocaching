@@ -1,0 +1,48 @@
+.Orbital {
+  margin: 0 auto;
+  position: fixed;
+  bottom: 3rem;
+  z-index: 1000000000;
+  width: 70px;
+  height: 70px;
+  border: 0;
+  border-radius: 50%;
+  opacity: 1;
+  padding: 1rem;
+  box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 50%);
+  background-color: white;
+  transition: 300ms ease all;
+}
+
+.btn-secondary {
+  color: #0a0a0a;
+  background-color: #fdfeff;
+  border-color: #fcfcfc;
+}
+
+.alert {
+  margin-bottom: 0rem;
+}
+
+.nav-link:hover {
+  background: #29100d;
+  color: #f8f6d7;
+}
+.nav-link {
+  color: rgb(64, 64, 177);
+}
+ 
+.desplegable:hover{
+  background: #dfdfdf;
+  color: #0a0a0a;
+}
+
+.altaRegister:hover{
+  background: #119639;
+  color: #f8f6d7;
+}
+
+.altaLogin:hover{
+  background: #011d79;
+  color: #f8f6d7;
+}
