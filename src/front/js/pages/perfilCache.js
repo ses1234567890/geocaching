@@ -34,7 +34,7 @@ export const PerfilCache = () => {
         <div class="container">
             <div class="row ">
                 <div >
-                    <div class="btn-group container" aria-label="Basic checkbox toggle button group" >
+                    <div class="btn-group container mt-5" aria-label="Basic checkbox toggle button group" >
                         <label class="btn btn-outline-primary mx-auto " onClick={mostrarDatosCache}>Información Caché</label>
                         <label class="btn btn-outline-primary mx-auto " onClick={mostrarComentariosCache}> Comentarios</label>
                         <label class="btn btn-outline-primary mx-auto " onClick={mostrarFotosCache}> Galerías de fotos</label>

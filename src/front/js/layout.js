@@ -20,7 +20,7 @@ import { CachesFamilia} from "./pages/cachesFamilia";
 import { Blog} from "./pages/blog";
 
 import injectContext from "./store/appContext";
-
+import { NavbarNuevo } from "./component/navbarNuevo";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -34,7 +34,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <NavbarNuevo />
           <Routes>
             <Route element={<Demo />} path="/demo" />
             <Route element={<Home />} path="/" />

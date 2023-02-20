@@ -11,16 +11,7 @@ export const Demo = () => {
 	return (
 
 		<div>
-			<div class="card text-bg-dark">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Wetterstein_mountains_banner.jpg" class="card-img" alt="..." />
-				<div class="card-img-overlay align-items-center d-flex">
-					<form class="w-50 m-auto p-0" role="search">
-						<div class="d-flex justify-content-center">
-							<input class="form-control" type="search" placeholder="Search" aria-label="Search" />
-						</div>
-					</form>
-				</div>
-			</div>
+			
 			<div className="container">
 				<h1 className="text-center mt-4 mb-3">Geocaching: Descubre tesoros alrededor del Mundo</h1>
 				<p>Bienvenido a nuestro sitio web sobre geocaching, donde podrás vivir una experiencia única y emocionante mientras exploras el mundo en busca de tesoros escondidos. Conviértete en parte de una extensa comunidad de descubridores; todo ello combinando senderismo, emoción de un juego, tesoros ocultos y momentos inolvidables. ¡Comienza tu aventura ahora!</p>
