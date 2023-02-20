@@ -48,7 +48,6 @@ export const Cache = () => {
             setError(data.response);
         }
     };
-    console.log("que pasa que tal??")
     return (
         <>
             <div className="MapGoo col-12 p-2">
