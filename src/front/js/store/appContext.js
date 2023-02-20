@@ -18,9 +18,9 @@ const injectContext = (PassedComponent) => {
 			})
 		);
 
-		//		useEffect(() => {
-		//			state.actions.validateUser();
-		//		}, []);
+		useEffect(() => {
+			state.actions.validateUser();
+		}, []);
 
 		return (
 			<Context.Provider value={state}>

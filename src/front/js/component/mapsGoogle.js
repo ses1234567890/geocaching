@@ -5,8 +5,8 @@ export const MapsGoogle = () => {
         const map = new google.maps.Map(document.getElementById("map"), {
             center: {
                 lat:
-                    -3.8341618, lng:
-                    40.5638447
+                    2.542204, lng:
+                    39.584591
             },
             zoom: 13,
             mapTypeId: "roadmap",
@@ -77,7 +77,7 @@ export const MapsGoogle = () => {
     }
     // Create the script tag, set the appropriate attributes
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCEDRwEjbupXfWxpRrIvaclyagiFo554sw&libraries=places&callback=initMap';
+    script.src = process.env.GoogleMapsKeyApi;
     script.async = true;
 
     // Append the 'script' element to 'head'
