@@ -24,7 +24,7 @@ export const MapsGoogle = () => {
 
     return (
         <LoadScript
-            googleMapsApiKey="AIzaSyCEDRwEjbupXfWxpRrIvaclyagiFo554sw"
+            googleMapsApiKey={`${process.env.GoogleMapsApiKey}`}
             libraries={["places"]}
         >
             <StandaloneSearchBox onLoad={ref => inputRef.current = ref} onPlacesChanged={handlePlace}>
