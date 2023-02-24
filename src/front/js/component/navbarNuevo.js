@@ -14,7 +14,7 @@ export const NavbarNuevo = () => {
     return (
         <div>
             {store.userActive ? (
-                <div className="card text-bg-white">
+                <div className=" card text-bg-white sticky-sm-top">
                     <Link to="/demo" className="">
                         <img
                             src={logo}

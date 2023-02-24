@@ -18,7 +18,7 @@ import { ResolverCaches } from "./pages/resolverCaches";
 import { CachesUrbanos } from "./pages/cachesUrbanos";
 import { CachesFamilia} from "./pages/cachesFamilia";
 import { Blog} from "./pages/blog";
-
+import { TiposDeCaches} from "./pages/tiposDeCaches";
 import injectContext from "./store/appContext";
 import { NavbarNuevo } from "./component/navbarNuevo";
 import { Navbar } from "./component/navbar";
@@ -52,6 +52,7 @@ const Layout = () => {
             <Route element={<CachesUrbanos />} path="/como-encontrar-caches-en-entornos-urbanos" />
             <Route element={<CachesFamilia />} path="/como-involucrar-a-los-mas-pequenos-en-la-busqueda-de-caches" />
             <Route element={<Blog />} path="/blog" />
+            <Route element={<TiposDeCaches />} path="/tipos-de-caches" />
 
             <Route element={<h1>Not found!</h1>} />
           </Routes>
