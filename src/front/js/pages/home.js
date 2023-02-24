@@ -19,58 +19,49 @@ export const Home = () => {
           height=""
         />
 
-      </div>
-      <div className="card-group">
-        <div className="card">
-          <img
-            src="https://www.geocaching.com/play/Content/images/lohp/illustrations/signal.svg"
-            className="card-img-top w-25"
-            alt="..."
-          />
-          <div className="card-body">
-            <h5 className="card-title">1. Crea una cuenta </h5>
-            <p className="card-text">
-              Crea una cuenta en línea o a través de la aplicación oficial de
-              Geocaching® para ver un mapa de los geocachés cercanos.
-            </p>
-            <p className="card-text">
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </p>
+      </div >
+      <div className="container row row-col-lg-3 row-col-sm-1 mx-auto my-5 align-items-center">
+        <div className="card-group  text-center ">
+          <div className="card border-0 align-items-center">
+            <img
+              src="https://www.geocaching.com/play/Content/images/lohp/illustrations/signal.svg"
+              className="card-img-top w-25 align-items-center"
+              alt="..."
+            />
+            <div className="card-body ">
+              <h5 className="card-title">1. Crea una cuenta </h5>
+              <p className="card-text">
+                Crea una cuenta en línea para ver los mapas de los geocachés más cercanos.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="card">
-          <img
-            src="https://www.geocaching.com/play/Content/images/lohp/illustrations/phoneandpin.svg"
-            class="card-img-top w-25"
-            alt="..."
-          />
-          <div className="card-body">
-            <h5 className="card-title">2. Encuentra un geocaché</h5>
-            <p className="card-text">
-              Usa la app para navegar a un geocaché cercano. ¡No olvides el
-              móvil!
-            </p>
-            <p className="card-text">
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </p>
+          <div className="card border-0 align-items-center ">
+            <img
+              src="https://www.geocaching.com/play/Content/images/lohp/illustrations/phoneandpin.svg"
+              class="card-img-top w-25"
+              alt="..."
+            />
+            <div className="card-body  ">
+              <h5 className="card-title">2. Encuentra un geocaché</h5>
+              <p className="card-text">
+                Usa la app para navegar a un geocaché cercano.
+              </p>
+
+            </div>
           </div>
-        </div>
-        <div className="card">
-          <img
-            src="https://www.geocaching.com/play/Content/images/lohp/illustrations/notebookpencil.svg"
-            className="card-img-top w-25"
-            alt="..."
-          />
-          <div className="card-body">
-            <h5 className="card-title">3. Comparte tu experiencia</h5>
-            <p className="card-text">
-              Cuando encuentres el geocaché, abre el código QR y registra en la
-              app el caché. Vuelve a esconder el geocaché donde lo encontraste y
-              registra tu experiencia online.
-            </p>
-            <p className="card-text">
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </p>
+          <div className="card border-0 align-items-center ">
+            <img
+              src="https://www.geocaching.com/play/Content/images/lohp/illustrations/notebookpencil.svg"
+              className="card-img-top w-25"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title">3. Comparte tu experiencia</h5>
+              <p className="card-text">
+                Cuando encuentres el geocaché, abre el código QR y registra tu Hallazgo.
+              </p>
+
+            </div>
           </div>
         </div>
       </div>

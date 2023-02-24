@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Cluster } from "../component/cluster";
 import { Context } from "../store/appContext";
-
+import Mapa from "../../img/mapa.png"
 
 
 export const PerfilCache = () => {
@@ -49,7 +49,7 @@ export const PerfilCache = () => {
                             <h2 className="text-center mt-5">Datos Caché</h2>
                             <div className="col-4" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline align-items-start ">Ubicación</h3>
-                                <img class="img-fluid rounded mx-auto d-block d-flex align-items-center" src="https://maptiles02.geocaching.com/tile/14/4544/6977.png?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTGVCcm9uY2l0eSIsInBnZCI6IjFiODE5ZDgyLThjMzctNDYyYS1iZDhlLTZmNWIxN2QwOTRhYyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDQyNzc4MzEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiUHVibGljIiwiQmFzaWMiXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy91c2VyZGF0YSI6IjE3YjFiYWI0LTZjNTMtNDU0Yy04ZWE5LTJhNjY0ODkxYTQzMSIsImxnZCI6IjcyYzQ2YWJhLWI5MTctNDJhMS1hNzYyLTVjYmZkYmY2ZDJiYSIsInNjb3BlIjpbIndlYiIsIm1hcHRpbGUiLCJnYXJtaW4iXSwibmJmIjoxNjc2NDU4OTczLCJleHAiOjE2NzY0NjI1NzMsImlzcyI6Imh0dHBzOi8vb2F1dGguZ2VvY2FjaGluZy5jb20vdG9rZW4iLCJhdWQiOiIxN2IxYmFiNC02YzUzLTQ1NGMtOGVhOS0yYTY2NDg5MWE0MzEifQ.R4sUfuuMM1OLNoQlhSO1xuWK-CRpsqZEsb5ti2Lxf3M" alt="..." />
+                                <img class="img-fluid rounded mx-auto d-block d-flex align-items-center" src={Mapa} alt="..." />
 
                             </div>
 
