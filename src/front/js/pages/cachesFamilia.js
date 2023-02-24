@@ -10,7 +10,7 @@ export const CachesFamilia = () => {
 
     return (
 
-        <div class="container">
+        <div className="container">
             <h1>Aventura en familia: Cómo involucrar a los niños en la búsqueda de cachés</h1>
             <img src="https://news.americafirst.com/wp-content/uploads/2019/06/19_06_GeoCaching_NR.jpg" class="img-fluid mx-auto d-block my-5 " alt="..." />
 

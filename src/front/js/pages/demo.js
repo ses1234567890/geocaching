@@ -11,7 +11,7 @@ export const Demo = () => {
 	return (
 
 		<div>
-			
+
 			<div className="container">
 				<h1 className="text-center mt-4 mb-3">Geocaching: Descubre tesoros alrededor del Mundo</h1>
 				<p>Bienvenido a nuestro sitio web sobre geocaching, donde podrás vivir una experiencia única y emocionante mientras exploras el mundo en busca de tesoros escondidos. Conviértete en parte de una extensa comunidad de descubridores; todo ello combinando senderismo, emoción de un juego, tesoros ocultos y momentos inolvidables. ¡Comienza tu aventura ahora!</p>
@@ -39,7 +39,7 @@ export const Demo = () => {
 					<Cluster classboton= "d-none" cardBorder= "card border-2 border-primary" cardTitle= "Caché 8" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
 					<button type="button" class="btn btn-secondary d-block mx-auto">Descubre más Cachés</button>
 				</div>
-				
+
 			</div>
 
 		</div>

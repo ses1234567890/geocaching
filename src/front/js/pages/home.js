@@ -38,7 +38,7 @@ export const Home = () => {
           <div className="card border-0 align-items-center ">
             <img
               src="https://www.geocaching.com/play/Content/images/lohp/illustrations/phoneandpin.svg"
-              class="card-img-top w-25"
+              className="card-img-top w-25"
               alt="..."
             />
             <div className="card-body  ">
@@ -46,7 +46,6 @@ export const Home = () => {
               <p className="card-text">
                 Usa la app para navegar a un geocaché cercano.
               </p>
-
             </div>
           </div>
           <div className="card border-0 align-items-center ">
