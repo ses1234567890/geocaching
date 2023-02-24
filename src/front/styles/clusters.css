@@ -43,6 +43,10 @@
 }
 
 .altaLogin:hover{
-  background: #011d79;
+  background: #597ae6;
   color: #f8f6d7;
 }
+
+.ju {
+  transition:transform .4s;
+ }

@@ -14,7 +14,7 @@ export const NavbarNuevo = () => {
     return (
         <div>
             {store.userActive ? (
-                <div className="card text-bg-white">
+                <div className=" card text-bg-white sticky-sm-top">
                     <Link to="/demo" className="">
                         <img
                             src={logo}
@@ -24,7 +24,7 @@ export const NavbarNuevo = () => {
                         />
                     </Link>
                 </div>) : (
-                    <div className="card text-bg-white">
+                    <div className=" card text-bg-white sticky-sm-top">
                 <Link to="/" className="">
                     <img
                         src={logo}
@@ -35,7 +35,7 @@ export const NavbarNuevo = () => {
                 </Link></div>)}
 
 
-            <ul class="nav justify-content-center alert alert-primary p-1 border-0">
+            <ul class="nav justify-content-center alert alert-primary p-1 border-0 sticky-sm-top">
                 {store.userActive ? (
                     <>
                         <li class="nav-item d-none d-lg-block">
@@ -59,7 +59,7 @@ export const NavbarNuevo = () => {
                             </Link>
                             <ul class="dropdown-menu ">
                                 <li class="nav-item d-none d-lg-block  ">
-                                    <Link to="/demo" className="  nav-link active desplegable" aria-current="page">
+                                    <Link to="/tipos-de-caches" className="  nav-link active desplegable" aria-current="page">
                                         Tipos de Cachés
                                     </Link>
                                 </li>
