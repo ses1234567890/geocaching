@@ -41,7 +41,7 @@ export const Home = () => {
         <div className="card">
           <img
             src="https://www.geocaching.com/play/Content/images/lohp/illustrations/phoneandpin.svg"
-            class="card-img-top w-25"
+            className="card-img-top w-25"
             alt="..."
           />
           <div className="card-body">

@@ -10,7 +10,7 @@ export const CachesMasImpresionantes = () => {
 
     return (
 
-        <div class="container">
+        <div className="container">
 
             <h1>Descubre los cachés más Impresionantes y raros del mundo</h1>
             <img src="https://gs-blog.s3-us-west-2.amazonaws.com/e2v28iRkoCMckOTvhY9-6Soa6I2wwz9pkLaTsO8zOix1SEsdCRggChPqq1qALCck0O088ryoSetJAiCw8HrHxhzk5wOXnO5xnkAxG07lslM7bcS-tpwn_6tcOKho5UfPg3nkIMwN" class="img-fluid mx-auto d-block my-5 " alt="..." />
