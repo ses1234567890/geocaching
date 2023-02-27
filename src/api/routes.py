@@ -42,7 +42,18 @@ def get_caches():
     # owner_id = request.jeson.get("owner_id")
     caches = Cache.query.all()
     return jsonify({"results": [cache.serialize() for cache in caches]}), 200
-    
+
+@api.route('/perfil-cache/<int:id>', methods=['GET'])
+def get_details(id):
+    cache = Cache.query.filter_by(id=id).first()
+    if not cache:
+        return jsonify({"error": "Cache no encontrada"}), 404
+    return jsonify(cache.serialize()), 200
+
+
+
+ 
+
 @api.route('/register', methods=['POST'])
 def user_register():
     body_email = request.json.get("email")
@@ -89,3 +100,4 @@ def cache_register():
     db.session.add(new_cache)
     db.session.commit()
     return jsonify({"response": "Cache registered successfully"}), 200   
+ 

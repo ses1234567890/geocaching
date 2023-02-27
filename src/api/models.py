@@ -50,6 +50,7 @@ class Cache(db.Model):
     images = db.relationship('Image')
     def serialize(self):
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "country": self.country,
@@ -58,8 +59,10 @@ class Cache(db.Model):
             "coordinates_y": self.coordinates_y,
             "coordinates_x": self.coordinates_x,
             "size": self.size,
+            "difficulty": self.difficulty,
             "qr_url": self.qr_url,
             "owner_id": self.owner_id,
+
         }
 
 class Image(db.Model):

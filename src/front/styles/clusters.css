@@ -31,22 +31,18 @@
 .nav-link {
   color: rgb(64, 64, 177);
 }
- 
-.desplegable:hover{
+
+.desplegable:hover {
   background: #dfdfdf;
   color: #0a0a0a;
 }
 
-.altaRegister:hover{
+.altaRegister:hover {
   background: #119639;
   color: #f8f6d7;
 }
 
-.altaLogin:hover{
+.altaLogin:hover {
   background: #597ae6;
   color: #f8f6d7;
 }
-
-.ju {
-  transition:transform .4s;
- }

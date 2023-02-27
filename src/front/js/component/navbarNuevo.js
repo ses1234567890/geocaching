@@ -59,7 +59,7 @@ export const NavbarNuevo = () => {
                             </Link>
                             <ul className="dropdown-menu ">
                                 <li className="nav-item d-none d-lg-block  ">
-                                    <Link to="/demo" className="  nav-link active desplegable" aria-current="page">
+                                    <Link to="/tipos-de-caches" className="  nav-link active desplegable" aria-current="page">
                                         Tipos de Cachés
                                     </Link>
                                 </li>
@@ -68,11 +68,7 @@ export const NavbarNuevo = () => {
                                         Registro de Cachés
                                     </Link>
                                 </li>
-                                <li className="nav-item d-none d-lg-block desplegable">
-                                    <Link to="/perfil-cache" className="  nav-link active desplegable" aria-current="page">
-                                        Perfil de Caché
-                                    </Link>
-                                </li>
+                                
 
                             </ul>
                         </li>
@@ -155,7 +151,7 @@ export const NavbarNuevo = () => {
                                 </Link>
                                 <ul className="dropdown-menu">
                                     <li className="nav-item d-none d-lg-block">
-                                        <Link to="/demo" className="nav-link active text-dark" aria-current="page">
+                                        <Link to="/tipos-de-caches" className="nav-link active text-dark" aria-current="page">
                                             Tipos de Cachés
                                         </Link>
                                     </li>

@@ -1,14 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Cluster } from "../component/cluster";
 import { Context } from "../store/appContext";
+
 import Mapa from "../../img/mapa.png"
 
 
 export const PerfilCache = () => {
+    const params = useParams();
     const [selectedDiv1, setSelectedDiv1] = useState(true);
     const [selectedDiv2, setSelectedDiv2] = useState(false);
     const [selectedDiv3, setSelectedDiv3] = useState(false);
+    const [perfilDetails, setPerfilDetails] = useState({});
+
+    useEffect(() => {
+        getDetails()
+    }, [])
+
+    const getDetails = async () => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/perfil-cache/" + params.id);
+        const data = await response.json();
+        setPerfilDetails(data)
+
+    }
 
     const mostrarDatosCache = () => {
         setSelectedDiv1(!selectedDiv1);
@@ -46,7 +60,7 @@ export const PerfilCache = () => {
                 <div >
                     {selectedDiv1 ? (
                         <div className="container-fluid row" >
-                            <h2 className="text-center mt-5">Datos Caché</h2>
+                            <h2 className="text-center mt-5">Datos Caché {perfilDetails.name}</h2>
                             <div className="col-4" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline align-items-start ">Ubicación</h3>
                                 <img class="img-fluid rounded mx-auto d-block d-flex align-items-center" src={Mapa} alt="..." />
@@ -56,15 +70,13 @@ export const PerfilCache = () => {
                             <div className="col-8" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline">Información</h3>
                                 <ul class="list-group mb-5">
-                                    <li class="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> N 30° 06,993' / O 81° 20,705 </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Country:</strong> Spain</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>City:</strong> Madrid</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>difficulty:</strong> medium </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Size:</strong> small </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Description:</strong> Al seguir las coordenadas GPS y las pistas que te llevarán a lo largo de una hermosa ruta rodeada de arroyos y naturaleza, finalmente llegarás a un lugar donde verás una gran roca en el centro de un claro. Si te acercas a la roca y la examinas detenidamente, notarás que hay una pequeña cueva en su base, apenas visible pero accesible.
-                                        Dentro de la cueva encontrarás un pequeño contenedor de plástico o metal decorado con dibujos y símbolos relacionados con la naturaleza, como flores y hojas. Al abrirlo, encontrarás una libreta o registro donde podrás escribir tu nombre y la fecha en que encontraste la caché, así como algunos objetos pequeños como llaveros, monedas y otros recuerdos que los jugadores anteriores han dejado allí.
-                                        Además de estos objetos, encontrarás un pequeño tesoro adicional. Un collar hecho a mano con un colgante de cristal tallado en forma de hoja, que simboliza la belleza de la naturaleza que te rodea. Si deseas llevarte el collar a casa, podrás hacerlo siempre y cuando dejes algo de valor similar a cambio.
-                                        Este caché hipotético te permitiría disfrutar de una hermosa caminata por la naturaleza, mientras te desafía a seguir las pistas y coordinadas para encontrar el tesoro escondido. </li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Nombre:</strong> {perfilDetails.name}</li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x }/ {perfilDetails.coordinates_y} </li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Country:</strong> {perfilDetails.country}</li>
+                                    <li class="list-group-item list-group-item-warning"><strong>City:</strong> {perfilDetails.city}</li>
+                                    <li class="list-group-item list-group-item-warning"><strong>difficulty:</strong> {perfilDetails.difficulty} </li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Size:</strong> {perfilDetails.size} </li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Description:</strong> {perfilDetails.description}</li>
                                 </ul>
                             </div>
                         </div>
@@ -74,14 +86,6 @@ export const PerfilCache = () => {
                         <div className="container-fluid ">
                             <h2 className="text-center mb-5 mt-5">Comentarios sobre Caché</h2>
                             <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mb-3 ">
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="Comentario 1" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmjKGfBwR_t-CJ95quTElxU4H9R1WEu1tbSGD02aTmngtylR7tGcdasCYe_i0-gse6f6E&usqp=CAU" />
                             </div>
                             <nav aria-label="Page navigation example mt-5" >
                                 <ul class="pagination justify-content-center">
@@ -103,14 +107,6 @@ export const PerfilCache = () => {
                         <div className="container-fluid">
                             <h2 className="text-center mb-5 mt-5">Galería de Fotos de Caché</h2>
                             <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mb-3">
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 1" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 2" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 3" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 4" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 5" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 6" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 6" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
-                                <Cluster classboton="d-none" cardBorder="card border-2 border-primary" cardTitle="imagen 8" image="https://www.shutterstock.com/image-photo/woman-hiker-kisses-beautiful-adventurous-260nw-2043843839.jpg" />
                             </div>
                             <nav aria-label="Page navigation example mt-5" >
                                 <ul class="pagination justify-content-center">

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-import { MapsGoogle } from "../component/mapsGoogle";
+
 
 export const Cache = () => {
     const navigate = useNavigate();
@@ -51,9 +51,7 @@ export const Cache = () => {
 
     return (
         <>
-            <div className="MapGoo col-12 p-2">
-                <MapsGoogle />
-            </div>
+            
             <div className="container col-6 mt-3 border rounded">
                 <h2 className="text-center m-3">Register Cache</h2>
                 <div className="row my-3">

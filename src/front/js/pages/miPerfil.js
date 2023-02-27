@@ -104,43 +104,22 @@ export const MiPerfil = () => {
                     {showDiv2 ? (
                         <div >
                             <h2 className="text-center mb-5">Mi Cachés Registrados</h2>
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 1" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 2" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 3" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 4" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 5" image="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" />
                         </div>
                     ) : null}
                     {showDiv3 ? (
                         <div>
                             <h2 className="text-center mb-5">Mi Cachés Encontrados</h2>
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 1" image="https://www.ui1.es/sites/default/files/blog/images/tesoro_retocada.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 2" image="https://www.ui1.es/sites/default/files/blog/images/tesoro_retocada.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 3" image="https://www.ui1.es/sites/default/files/blog/images/tesoro_retocada.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 4" image="https://www.ui1.es/sites/default/files/blog/images/tesoro_retocada.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 5" image="https://www.ui1.es/sites/default/files/blog/images/tesoro_retocada.jpg" />
 
                         </div>
                     ) : null}
                     {showDiv4 ? (
                         <div>
                             <h2 className="text-center mb-5">Mi Cachés Favoritos</h2>
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 1" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 2" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 3" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 4" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
-                            <Cluster classboton="btn btn-danger btn-sm" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Caché 5" image="https://i.pinimg.com/originals/a9/8b/57/a98b57872cdcfc51ed78e1577394d667.jpg" />
-
                         </div>
                     ) : null}
                     {showDiv5 ? (
                         <div>
                             <h2 className="text-center mb-5">Mi Posts Favoritoss</h2>
-                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 1" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 2" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 3" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 4" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
-                            <Cluster classboton="" boton="Delete" cardBorder="card border-2 border-primary" cardTitle="Post 5" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
 
                         </div>
                     ) : null}

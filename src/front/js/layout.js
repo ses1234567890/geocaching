@@ -19,6 +19,12 @@ import { CachesUrbanos } from "./pages/cachesUrbanos";
 import { CachesFamilia} from "./pages/cachesFamilia";
 import { Blog} from "./pages/blog";
 import { TiposDeCaches} from "./pages/tiposDeCaches";
+import { CachesUbicacion} from "./pages/cachesUbicacion";
+import { CachesSegmentacion} from "./pages/cachesSegmentacion";
+import { CachesTamano} from "./pages/cachesTamano";
+import { CachesDificultad} from "./pages/cachesDificultad";
+
+
 import injectContext from "./store/appContext";
 import { NavbarNuevo } from "./component/navbarNuevo";
 import { Navbar } from "./component/navbar";
@@ -39,7 +45,7 @@ const Layout = () => {
             <Route element={<Demo />} path="/demo" />
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
-            <Route element={<PerfilCache />} path="/perfil-cache" />
+            <Route element={<PerfilCache />} path="/perfil-cache/:id" />
             <Route element={<MiPerfil />} path="/mi-Perfil" />
             <Route element={<Register />} path="/register" />
             <Route element={<Cache />} path="/reg_cache" />
@@ -53,7 +59,10 @@ const Layout = () => {
             <Route element={<CachesFamilia />} path="/como-involucrar-a-los-mas-pequenos-en-la-busqueda-de-caches" />
             <Route element={<Blog />} path="/blog" />
             <Route element={<TiposDeCaches />} path="/tipos-de-caches" />
-
+            <Route element={<CachesUbicacion />} path="/caches-ubicacion"/>
+            <Route element={<CachesDificultad />} path="/caches-dificultad"/>
+            <Route element={<CachesTamano />} path="/caches-tamano"/>
+            <Route element={<CachesSegmentacion />} path="/caches/:tipos"/>
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

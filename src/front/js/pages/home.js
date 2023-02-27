@@ -29,7 +29,7 @@ export const Home = () => {
               alt="..."
             />
             <div className="card-body ">
-              <h5 className="card-title">1. Crea una cuenta </h5>
+              <h5 className="card-title">1. Elige tu Caché</h5>
               <p className="card-text">
                 Crea una cuenta en línea para ver los mapas de los geocachés más cercanos.
               </p>
