@@ -29,6 +29,7 @@ import injectContext from "./store/appContext";
 import { NavbarNuevo } from "./component/navbarNuevo";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Buscador } from "./component/buscador";
 
 //create your first component
 const Layout = () => {
@@ -58,12 +59,15 @@ const Layout = () => {
             <Route element={<CachesUrbanos />} path="/como-encontrar-caches-en-entornos-urbanos" />
             <Route element={<CachesFamilia />} path="/como-involucrar-a-los-mas-pequenos-en-la-busqueda-de-caches" />
             <Route element={<Blog />} path="/blog" />
+            <Route element={<Buscador />} path="/buscador" />
+
             <Route element={<TiposDeCaches />} path="/tipos-de-caches" />
             <Route element={<CachesUbicacion />} path="/caches-ubicacion"/>
             <Route element={<CachesDificultad />} path="/caches-dificultad"/>
             <Route element={<CachesTamano />} path="/caches-tamano"/>
             <Route element={<CachesSegmentacion />} path="/caches/:tipos"/>
             <Route element={<h1>Not found!</h1>} />
+            
           </Routes>
           <Footer />
         </ScrollToTop>

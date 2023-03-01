@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			caches: [],
+			cachesToShow: [],
 			userActive: null,
 		},
 
@@ -10,6 +11,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + "/api/cache");
 				const data = await response.json();
 				setStore({ caches: data.results })
+			},
+
+			getCachesToShow: async () => {
+				const response = await fetch(process.env.BACKEND_URL + "/api/ToShowcache");
+				const data = await response.json();
+				setStore({ cachesToShow: data.results })
 			},
 
 			validateUser: async () => {

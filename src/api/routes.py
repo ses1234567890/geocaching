@@ -43,6 +43,22 @@ def get_caches():
     caches = Cache.query.all()
     return jsonify({"results": [cache.serialize() for cache in caches]}), 200
 
+@api.route('/ToShowcache', methods=['GET'])
+def get_ToShowCaches():
+    # name = request.json.get("name")
+    # description = request.json.get("description")
+    # country = request.jeson.get("country")
+    # city = request.jeson.get("city")
+    # postal_code = request.jeson.get("postal_code")
+    # coordinates_y = request.jeson.get("coordinates_y")
+    # coordinates_x = request.jeson.get("coordinates_x")
+    # difficulty = request.jeson.get("difficulty")
+    # size = request.jeson.get("size")
+    # qr_url = request.jeson.get("qr_url")
+    # owner_id = request.jeson.get("owner_id")
+    toShowcache = Cache.query.all()
+    return jsonify({"results": [cache.serialize() for cache in toShowcache]}), 200
+
 @api.route('/perfil-cache/<int:id>', methods=['GET'])
 def get_details(id):
     cache = Cache.query.filter_by(id=id).first()
