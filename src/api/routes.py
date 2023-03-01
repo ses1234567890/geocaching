@@ -66,10 +66,6 @@ def get_details(id):
         return jsonify({"error": "Cache no encontrada"}), 404
     return jsonify(cache.serialize()), 200
 
-
-
- 
-
 @api.route('/register', methods=['POST'])
 def user_register():
     body_email = request.json.get("email")
@@ -89,12 +85,12 @@ def cache_register():
     body_name = request.json.get("name")
     body_description = request.json.get("description")
     body_country = request.json.get("country")
+    body_state = request.json.get("state")
     body_city = request.json.get("city")
     body_postal_code = request.json.get("postal_code")
     body_coordinates_y = request.json.get("coordinates_y")
     body_coordinates_x = request.json.get("coordinates_x")
     body_difficulty = request.json.get("difficulty")
-    print (type(body_difficulty))
     body_size = request.json.get("size")
     body_qr_url = request.json.get("qr_url")
     cache_already_exist = Cache.query.filter_by(name= body_name).first()
@@ -103,7 +99,8 @@ def cache_register():
     new_cache = Cache(
         name=body_name,
         description=body_description,
-        country=body_country,
+        country="España",
+        state=body_state,
         city=body_city,
         postal_code=body_postal_code,
         coordinates_y=body_coordinates_y,

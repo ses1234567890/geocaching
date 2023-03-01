@@ -38,6 +38,7 @@ class Cache(db.Model):
     is_approved = db.Column(db.Boolean, nullable=False, default=False)
     description = db.Column(db.Text, nullable=False)
     country = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     postal_code = db.Column(db.String(255), nullable=False)
     coordinates_y = db.Column(db.Float)
@@ -54,15 +55,14 @@ class Cache(db.Model):
             "name": self.name,
             "description": self.description,
             "country": self.country,
+            "state": self.state,
             "city": self.city,
             "postal_code": self.postal_code,
             "coordinates_y": self.coordinates_y,
             "coordinates_x": self.coordinates_x,
             "size": self.size,
-            "difficulty": self.difficulty,
             "qr_url": self.qr_url,
             "owner_id": self.owner_id,
-
         }
 
 class Image(db.Model):

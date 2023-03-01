@@ -71,7 +71,7 @@ export const PerfilCache = () => {
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline">Información</h3>
                                 <ul class="list-group mb-5">
                                     <li class="list-group-item list-group-item-warning"><strong>Nombre:</strong> {perfilDetails.name}</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x }/ {perfilDetails.coordinates_y} </li>
+                                    <li class="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x}/ {perfilDetails.coordinates_y} </li>
                                     <li class="list-group-item list-group-item-warning"><strong>Country:</strong> {perfilDetails.country}</li>
                                     <li class="list-group-item list-group-item-warning"><strong>City:</strong> {perfilDetails.city}</li>
                                     <li class="list-group-item list-group-item-warning"><strong>difficulty:</strong> {perfilDetails.difficulty} </li>
