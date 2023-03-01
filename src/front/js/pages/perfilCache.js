@@ -45,13 +45,13 @@ export const PerfilCache = () => {
 
     return (
 
-        <div class="container">
-            <div class="row ">
+        <div className="container">
+            <div className="row ">
                 <div >
                     <div class="btn-group container mt-5" aria-label="Basic checkbox toggle button group" >
-                        <label class="btn btn-outline-primary mx-auto " onClick={mostrarDatosCache}>Información Caché</label>
-                        <label class="btn btn-outline-primary mx-auto " onClick={mostrarComentariosCache}> Comentarios</label>
-                        <label class="btn btn-outline-primary mx-auto " onClick={mostrarFotosCache}> Galerías de fotos</label>
+                        <label className="btn btn-outline-primary mx-auto " onClick={mostrarDatosCache}>Información Caché</label>
+                        <label className="btn btn-outline-primary mx-auto " onClick={mostrarComentariosCache}> Comentarios</label>
+                        <label className="btn btn-outline-primary mx-auto " onClick={mostrarFotosCache}> Galerías de fotos</label>
                     </div>
                 </div>
 
@@ -63,20 +63,20 @@ export const PerfilCache = () => {
                             <h2 className="text-center mt-5">Datos Caché {perfilDetails.name}</h2>
                             <div className="col-4" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline align-items-start ">Ubicación</h3>
-                                <img class="img-fluid rounded mx-auto d-block d-flex align-items-center" src={Mapa} alt="..." />
+                                <img className="img-fluid rounded mx-auto d-block d-flex align-items-center" src={Mapa} alt="..." />
 
                             </div>
 
                             <div className="col-8" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline">Información</h3>
                                 <ul class="list-group mb-5">
-                                    <li class="list-group-item list-group-item-warning"><strong>Nombre:</strong> {perfilDetails.name}</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x}/ {perfilDetails.coordinates_y} </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Country:</strong> {perfilDetails.country}</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>City:</strong> {perfilDetails.city}</li>
-                                    <li class="list-group-item list-group-item-warning"><strong>difficulty:</strong> {perfilDetails.difficulty} </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Size:</strong> {perfilDetails.size} </li>
-                                    <li class="list-group-item list-group-item-warning"><strong>Description:</strong> {perfilDetails.description}</li>
+                                    <li className="list-group-item list-group-item-warning"><strong>Nombre:</strong> {perfilDetails.name}</li>
+                                    <li className="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x}/ {perfilDetails.coordinates_y} </li>
+                                    <li className="list-group-item list-group-item-warning"><strong>Country:</strong> {perfilDetails.country}</li>
+                                    <li className="list-group-item list-group-item-warning"><strong>City:</strong> {perfilDetails.city}</li>
+                                    <li className="list-group-item list-group-item-warning"><strong>difficulty:</strong> {perfilDetails.difficulty} </li>
+                                    <li className="list-group-item list-group-item-warning"><strong>Size:</strong> {perfilDetails.size} </li>
+                                    <li className="list-group-item list-group-item-warning"><strong>Description:</strong> {perfilDetails.description}</li>
                                 </ul>
                             </div>
                         </div>
@@ -88,15 +88,15 @@ export const PerfilCache = () => {
                             <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mb-3 ">
                             </div>
                             <nav aria-label="Page navigation example mt-5" >
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled" >
-                                        <a class="page-link">Previous</a>
+                                <ul className="pagination justify-content-center">
+                                    <li className="page-item disabled" >
+                                        <a className="page-link">Previous</a>
                                     </li>
-                                    <li class="page-item " ><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item "><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
+                                    <li className="page-item " ><a className="page-link" href="#">1</a></li>
+                                    <li className="page-item "><a className="page-link" href="#">2</a></li>
+                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                    <li className="page-item">
+                                        <a className="page-link" href="#">Next</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -109,15 +109,15 @@ export const PerfilCache = () => {
                             <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mb-3">
                             </div>
                             <nav aria-label="Page navigation example mt-5" >
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled" >
-                                        <a class="page-link">Previous</a>
+                                <ul className="pagination justify-content-center">
+                                    <li className="page-item disabled" >
+                                        <a className="page-link">Previous</a>
                                     </li>
-                                    <li class="page-item " ><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item "><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
+                                    <li className="page-item " ><a className="page-link" href="#">1</a></li>
+                                    <li className="page-item "><a className="page-link" href="#">2</a></li>
+                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                    <li className="page-item">
+                                        <a className="page-link" href="#">Next</a>
                                     </li>
                                 </ul>
                             </nav>

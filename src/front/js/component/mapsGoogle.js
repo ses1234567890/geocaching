@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, StandaloneSearchBox } from '@react-google-maps/api';
 
 const containerStyle = {
     width: "auto",
@@ -7,11 +7,13 @@ const containerStyle = {
 };
 
 
-export const MapsGoogle = () => {
+export const MapsGoogle = (props) => {
     const inputRef = useRef()
+    const [marker, setMarker] = useState({})
+
     const [center, setCenter] = useState({
-        lat: -3.745,
-        lng: -38.523
+        lat: 40.4165,
+        lng: -3.70256
     })
     const handlePlace = () => {
         const [place] = inputRef.current.getPlaces()
@@ -19,7 +21,17 @@ export const MapsGoogle = () => {
             lat: place.geometry.location.lat(),
             lng: place.geometry.location.lng()
         })
-        console.log(inputRef.current.getPlaces())
+        setMarker({
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+        })
+        console.log(inputRef.current.getPlaces()[0])
+
+        props.setData({
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            formatted_address: place.formatted_address
+        })
     }
 
     return (
@@ -27,7 +39,7 @@ export const MapsGoogle = () => {
             googleMapsApiKey={`${process.env.GoogleMapsApiKey}`}
             libraries={["places"]}
         >
-            <StandaloneSearchBox onLoad={ref => inputRef.current = ref} onPlacesChanged={handlePlace}>
+            <StandaloneSearchBox onLoad={ref => inputRef.current = ref} onPlacesChanged={handlePlace} className="search">
                 <input type="text" />
             </StandaloneSearchBox>
             <GoogleMap
@@ -35,7 +47,7 @@ export const MapsGoogle = () => {
                 center={center}
                 zoom={10}
             >
-                { /* Child components, such as markers, info windows, etc. */}
+                {marker ? <Marker position={marker} /> : ""}
                 <></>
             </GoogleMap>
         </LoadScript>
