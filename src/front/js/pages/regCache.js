@@ -2,19 +2,21 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 
-
 export const Cache = () => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [country, setCountry] = useState("");
-    const [city, setCity] = useState("");
+    const [states, setStates] = useState([]);
+    const [stateid, setStateID] = useState(null);
+    const [city, setCity] = useState([]);
+    const [cityid, setCityID] = useState(null);
     const [postalCode, setPostalCode] = useState("");
     const [coordinatesY, setCoordinatesY] = useState("");
     const [coordinatesX, setCoordinatesX] = useState("");
-    const [difficulty, setDifficulty] = useState("");
-    const [size, setSize] = useState("");
+    const [difficulty, setDifficulty] = useState("Baja");
+    const [size, setSize] = useState("Pequeño");
     const [qrURL, setQrURL] = useState("");
     const [error, setError] = useState("");
 
@@ -31,7 +33,8 @@ export const Cache = () => {
                     name: name,
                     description: description,
                     country: country,
-                    city: city,
+                    state: states.find(x => x.iso2 == stateid).name,
+                    city: city.find(x => x.name == cityid).name,
                     postal_code: postalCode,
                     coordinates_y: coordinatesY,
                     coordinates_x: coordinatesX,
@@ -49,193 +52,270 @@ export const Cache = () => {
         }
     };
 
+    useEffect(() => {
+        const getStates = async () => {
+            const resStates = await fetch("https://api.countrystatecity.in/v1/countries/es/states",
+                {
+                    method: "GET",
+                    headers: {
+                        "X-CSCAPI-KEY": "THBaNTRWWnhYTHJYdkZLWkxobWJYVEhLMnBEQWt4dkJ4MFRVTDN1TQ=="
+                    }
+                }
+            );
+            const response = await resStates.json();
+            setStates(response);
+        }
+        getStates();
+    }, [])
+
+    const handleState = (event) => {
+        const getStateID = event.target.value;
+        setStateID(getStateID);
+    }
+
+    useEffect(() => {
+        const getCity = async () => {
+            const resCity = await fetch(`https://api.countrystatecity.in/v1/countries/es/states/${stateid}/cities`,
+                {
+                    method: "GET",
+                    headers: {
+                        "X-CSCAPI-KEY": "THBaNTRWWnhYTHJYdkZLWkxobWJYVEhLMnBEQWt4dkJ4MFRVTDN1TQ=="
+                    }
+                }
+            );
+            const response = await resCity.json();
+            setCity(response);
+        }
+        getCity();
+    }, [stateid]);
+
     return (
-        <>
-            
-            <div className="container col-6 mt-3 border rounded">
-                <h2 className="text-center m-3">Register Cache</h2>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="name">
-                        Name:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="name"
-                            placeholder="name"
-                            value={name}
-                            onChange={(e) => {
-                                setError(false);
-                                setName(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="description">
-                        Descripion:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="description"
-                            placeholder="description"
-                            value={description}
-                            onChange={(e) => {
-                                setError(false);
-                                setDescription(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="country">
-                        Country:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="country"
-                            placeholder="country"
-                            value={country}
-                            onChange={(e) => {
-                                setError(false);
-                                setCountry(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="City">
-                        City:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="City"
-                            placeholder="City"
-                            value={city}
-                            onChange={(e) => {
-                                setError(false);
-                                setCity(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="postalCode">
-                        Postal code:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="postalCode"
-                            placeholder="postalCode"
-                            value={postalCode}
-                            onChange={(e) => {
-                                setError(false);
-                                setPostalCode(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="coordinatesY">
-                        Coordinates Y:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="coordinatesY"
-                            placeholder="coordinatesY"
-                            value={coordinatesY}
-                            onChange={(e) => {
-                                setError(false);
-                                setCoordinatesY(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="coordinatesX">
-                        Coordinates X:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="coordinatesX"
-                            placeholder="coordinatesX"
-                            value={coordinatesX}
-                            onChange={(e) => {
-                                setError(false);
-                                setCoordinatesX(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="difficulty">
-                        Difficulty:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="difficulty"
-                            placeholder="difficulty"
-                            value={difficulty}
-                            onChange={(e) => {
-                                setError(false);
-                                setDifficulty(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="size">
-                        Size:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="size"
-                            placeholder="size"
-                            value={size}
-                            onChange={(e) => {
-                                setError(false);
-                                setSize(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="row my-3">
-                    <label className="col-sm-2 col-form-label" htmlFor="qrURL">
-                        QR URL:{" "}
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            className="form-control"
-                            name="qrURL"
-                            placeholder="qrURL"
-                            value={qrURL}
-                            onChange={(e) => {
-                                setError(false);
-                                setQrURL(e.target.value);
-                            }}
-                        ></input>
-                    </div>
-                </div>
-                <div className="text-center mt-2 p-3 ">
-                    <button
-                        className="btn btn-success btn-lg"
-                        onClick={() => {
-                            sendCacheRegitral()
+        <div className="container col-6 mt-3 border rounded">
+            <h2 className="text-center m-3">Register Cache</h2>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="name">
+                    Name:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        className="form-control"
+                        name="name"
+                        placeholder="name"
+                        value={name}
+                        onChange={(e) => {
+                            setError(false);
+                            setName(e.target.value);
                         }}
-                    >
-                        Register Cache
-                    </button>
-                    {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+                    ></input>
                 </div>
             </div>
-        </>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="description">
+                    Descripion:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        className="form-control"
+                        name="description"
+                        placeholder="description"
+                        value={description}
+                        onChange={(e) => {
+                            setError(false);
+                            setDescription(e.target.value);
+                        }}
+                    ></input>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="country">
+                    Country:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <select
+                        className="form-select"
+                        name="Country"
+                        value={country}
+                        onChange={(e) => {
+                            setError(false);
+                            setCountry(e.target.value);
+                        }}>
+                        <option value="1">España</option>
+                    </select>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="State">
+                    State:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <select
+                        className="form-select"
+                        name="State"
+                        value={stateid}
+                        onChange={(e) => {
+                            setError(false);
+                            handleState(e);
+                        }}>
+                        <option value="">---</option>
+                        {
+                            states.map((state, index) => (
+                                <option key={index} value={state.iso2}>{state.name}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="City">
+                    City:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <select
+                        className="form-select"
+                        name="City"
+                        value={cityid}
+                        onChange={(e) => {
+                            setError(false);
+                            setCityID(e.target.value)
+                        }}>
+                        <option value="1">---</option>
+                        {
+                            city.map((city, index) => (
+                                <option key={index} value={city.name}>{city.name}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="postalCode">
+                    Postal code:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        type="number"
+                        min="0"
+                        className="form-control"
+                        name="postalCode"
+                        placeholder="postalCode"
+                        value={postalCode}
+                        onChange={(e) => {
+                            setError(false);
+                            setPostalCode(e.target.value);
+                        }}
+                    ></input>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="coordinatesY">
+                    Latitud:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        type="number"
+                        step="any"
+                        className="form-control"
+                        name="coordinatesY"
+                        placeholder="coordinatesY"
+                        value={coordinatesY}
+                        onChange={(e) => {
+                            setError(false);
+                            setCoordinatesY(e.target.value);
+                        }}
+                    ></input>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="coordinatesX">
+                    Longitud:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        type="number"
+                        step="any"
+                        className="form-control"
+                        name="coordinatesX"
+                        placeholder="coordinatesX"
+                        value={coordinatesX}
+                        onChange={(e) => {
+                            setError(false);
+                            setCoordinatesX(e.target.value);
+                        }}
+                    ></input>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="difficulty">
+                    Difficulty:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <select
+                        className="form-control"
+                        name="difficulty"
+                        placeholder="difficulty"
+                        value={difficulty}
+                        onChange={(e) => {
+                            setError(false);
+                            setDifficulty(e.target.value);
+                        }}
+                    >
+                        <option disabled>---</option>
+                        <option value="Baja">Baja</option>
+                        <option value="Media">Media</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="size">
+                    Size:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <select
+                        className="form-control"
+                        name="size"
+                        placeholder="size"
+                        value={size}
+                        onChange={(e) => {
+                            setError(false);
+                            setSize(e.target.value);
+                        }}
+                    >
+                        <option disabled>---</option>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+            </div>
+            <div className="row my-3">
+                <label className="col-sm-2 col-form-label" htmlFor="qrURL">
+                    QR URL:{" "}
+                </label>
+                <div className="col-sm-10">
+                    <input
+                        className="form-control"
+                        name="qrURL"
+                        placeholder="qrURL"
+                        value={qrURL}
+                        onChange={(e) => {
+                            setError(false);
+                            setQrURL(e.target.value);
+                        }}
+                    ></input>
+                </div>
+            </div>
+            <div className="text-center mt-2 p-3 ">
+                <button
+                    className="btn btn-success btn-lg"
+                    onClick={() => {
+                        sendCacheRegitral()
+                    }}
+                >
+                    Register Cache
+                </button>
+                {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+            </div>
+        </div>
     );
 };
