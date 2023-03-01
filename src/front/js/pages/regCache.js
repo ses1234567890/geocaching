@@ -14,9 +14,7 @@ export const Cache = () => {
     const [city, setCity] = useState([]);
     const [cityid, setCityID] = useState(null);
     const [postalCode, setPostalCode] = useState("");
-    const [coordinatesY, setCoordinatesY] = useState("");
-    const [coordinatesX, setCoordinatesX] = useState("");
-    const [difficulty, setDifficulty] = useState("Baja");
+    const [difficulty, setDifficulty] = useState("-1");
     const [size, setSize] = useState("Pequeño");
     const [qrURL, setQrURL] = useState("");
     const [error, setError] = useState("");
@@ -38,19 +36,19 @@ export const Cache = () => {
                     state: states.find(x => x.iso2 == stateid).name,
                     city: city.find(x => x.name == cityid).name,
                     postal_code: postalCode,
-                    coordinates_y: coordinatesY,
-                    coordinates_x: coordinatesX,
+                    coordinates_y: data.lat.toString(),
+                    coordinates_x: data.lng.toString(),
                     difficulty: difficulty,
                     size: size,
                     qr_url: qrURL,
                 }),
             }
         );
-        const data = await response.json();
+        const responsetoJson = await response.json();
         if (response.ok) {
             navigate("/");
         } else {
-            setError(data.response);
+            setError(responsetoJson.response);
         }
     };
 
@@ -226,7 +224,7 @@ export const Cache = () => {
                             value={data ? data.lat : ""}
                             onChange={(e) => {
                                 setError(false);
-                                setCoordinatesY(e.target.value);
+                                setData({ ...data, lat: e.target.value });
                             }}
                         ></input>
                     </div>
@@ -245,7 +243,7 @@ export const Cache = () => {
                             value={data ? data.lng : ""}
                             onChange={(e) => {
                                 setError(false);
-                                setCoordinatesX(e.target.value);
+                                setData({ ...data, lng: e.target.value });
                             }}
                         ></input>
                     </div>
@@ -265,7 +263,7 @@ export const Cache = () => {
                                 setDifficulty(e.target.value);
                             }}
                         >
-                            <option disabled>---</option>
+                            <option value="-1">---</option>
                             <option value="Baja">Baja</option>
                             <option value="Media">Media</option>
                             <option value="Alta">Alta</option>
@@ -315,7 +313,9 @@ export const Cache = () => {
                     <button
                         className="btn btn-success btn-lg"
                         onClick={() => {
-                            sendCacheRegistral()
+                            if (difficulty != "-1") {
+                                sendCacheRegistral()
+                            }
                         }}
                     >
                         Register Cache
