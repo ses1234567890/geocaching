@@ -22,6 +22,8 @@ const injectContext = (PassedComponent) => {
 			state.actions.validateUser();
 			state.actions.getCaches();
 			state.actions.getCachesToShow();
+			state.actions.getCurrentUser();
+			state.actions.getUpdateUser();
 		}, []);
 
 		

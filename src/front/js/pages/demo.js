@@ -12,11 +12,12 @@ export const Demo = () => {
 
 
 	return (
+		
 
 		<div>
 
 			<div className="container">
-				<h1 className="text-center mt-4 mb-3">Geocaching: Descubre tesoros alrededor del Mundo</h1>
+				<h1 className="text-center mt-4 mb-3">Geocaching: Descubre tesoros alrededor del Mundo </h1>
 				<p>Bienvenido a nuestro sitio web sobre geocaching, donde podrás vivir una experiencia única y emocionante mientras exploras el mundo en busca de tesoros escondidos. Conviértete en parte de una extensa comunidad de descubridores; todo ello combinando senderismo, emoción de un juego, tesoros ocultos y momentos inolvidables. ¡Comienza tu aventura ahora!</p>
 			</div>
 			<div className="container">

@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png"
 import person from "../../img/person.png"
+import { Buscador } from "../component/buscador";
 
 
 
 export const NavbarNuevo = () => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
+    const [showSearch, setShowSearch] = useState(false);
+
+
+    useEffect(() => {
+        setShowSearch();
+      }, [location]);
+      
+
+    const mostrarBuscador = () => {
+        setShowSearch(!showSearch);
+    
+    };
 
     return (
         <div>
@@ -68,8 +81,6 @@ export const NavbarNuevo = () => {
                                         Registro de Cachés
                                     </Link>
                                 </li>
-                                
-
                             </ul>
                         </li>
                         <div className="dropdown-center ">
@@ -92,6 +103,16 @@ export const NavbarNuevo = () => {
                                 </li>
                             </ul>
                         </div>
+                        <li className="nav-item d-none d-lg-block ">
+                            <Link to="/mi-Perfil" className="nav-link active text-danger" aria-current="page">
+                                Hola {store.currentUser.name}
+                            </Link>
+                        </li>
+                        <li className="nav-item d-none d-lg-block">
+                                    <button type="button" class="btn btn-light" onClick={mostrarBuscador}><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                                </li>
+
+
                     </>
                 ) : (
                     <>
@@ -121,6 +142,9 @@ export const NavbarNuevo = () => {
 
 
             </ul>
+            
+            {showSearch ? (
+            <Buscador/>) : null}
 
             <div className=" Orbital position-fixed end-0 mx-5 d-md-none">
                 <button type="button" className="  btn btn-secondary btn-floating d-block d-md-none " data-bs-toggle="dropdown" aria-expanded="false">

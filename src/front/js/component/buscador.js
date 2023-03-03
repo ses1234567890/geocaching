@@ -10,20 +10,20 @@ export const Buscador = () => {
 	const [query, setQuery] = useState({ city: '', size: '', difficulty: '' });
 	const [hasFilters, setHasFilters] = useState(false);
 
-const handleChange = (event) => {
-	
-	const value = event.target.value;
-	setQuery({ ...query, [event.target.name]: value });
-	const trimmedValue = value.trim();
-	if (trimmedValue !== '') {
-		setHasFilters(true);
-	} else if (query[event.target.name].trim() !== trimmedValue) {
-		setHasFilters(true);
-	} else {
-		setHasFilters(false);
-	}
-	
-};
+	const handleChange = (event) => {
+
+		const value = event.target.value;
+		setQuery({ ...query, [event.target.name]: value });
+		const trimmedValue = value.trim();
+		if (trimmedValue !== '') {
+			setHasFilters(true);
+		} else if (query[event.target.name].trim() !== trimmedValue) {
+			setHasFilters(true);
+		} else {
+			setHasFilters(false);
+		}
+
+	};
 
 
 
@@ -53,13 +53,15 @@ const handleChange = (event) => {
 	const cachesToShow = filterCaches();
 
 	return (
-		<div>
-			<input type="text" name="city" value={query.city} onChange={handleChange} />
-			<input type="text" name="size" value={query.size} onChange={handleChange} />
-			<input type="text" name="difficulty" value={query.difficulty} onChange={handleChange} />
+		<div className="container mx-auto">
+			<div className=" row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 m-5 alert alert-primary border border-primary ">
+				<input placeholder="Country, City ..." type="text" name="city" value={query.city} onChange={handleChange} />
+				<input placeholder="Size ..." type="text" name="size" value={query.size} onChange={handleChange} />
+				<input placeholder="Difficulty ..." type="text" name="difficulty" value={query.difficulty} onChange={handleChange} />
+			</div>
 			{hasFilters && cachesToShow.length > 0 ? (
 				<div>
-					<div className="container mb-5 row row-cols-lg-4 mx-auto gx-3">
+					<div className="container mb-5 row row-cols-lg-4 mx-auto gx-3 flex-nowrap overflow-auto pb-3">
 						{cachesToShow.map((cache) => {
 							return (
 								<div class="card" key={cache.id}>

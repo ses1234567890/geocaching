@@ -61,6 +61,7 @@ class Cache(db.Model):
             "coordinates_y": self.coordinates_y,
             "coordinates_x": self.coordinates_x,
             "size": self.size,
+            "difficulty": self.difficulty,
             "qr_url": self.qr_url,
             "owner_id": self.owner_id,
         }

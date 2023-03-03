@@ -7,6 +7,12 @@ import { Context } from "../store/appContext";
 
 export const MiPerfil = () => {
     const { store, actions } = useContext(Context);
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [country, setCountry] = useState("");
+    const [city, setCity] = useState("");
+
 
     const [showDiv1, setShowDiv1] = useState(false);
     const [showDiv2, setShowDiv2] = useState(false);
@@ -55,6 +61,8 @@ export const MiPerfil = () => {
         setShowDiv5(!showDiv5);
     };
 
+    
+
     return (
         <div className="container mb-5">
             <h1 className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "mb-5" : "text-center mb-5"}`}>GeoCaching - My Profile</h1>
@@ -85,19 +93,25 @@ export const MiPerfil = () => {
                                 </div>
                             </div>
                             <label for="exampleFormControlInput1" class="form-label mt-3">Nombre</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Apellidos</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1 " placeholder="Apellidos" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3 ">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1 " placeholder="Email" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3 ">Fecha de Nacimiento</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de Nacimiento" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">País</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="País" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Ciudad</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ciudad" />
+                            <input type="email" class="form-control" id="exampleFormControlInput1" value={name}
+                                onChange={(e) => { setName(e.target.value); }} placeholder={store.currentUser.name} />
+                            <label for="exampleFormControlInput1" class="form-label mt-3">Email</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" value={email}
+                                onChange={(e) => { setEmail(e.target.value); }} placeholder={store.currentUser.email} />
+                            <label for="exampleFormControlInput1" class="form-label mt-3 ">Password</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" value={password}
+                                onChange={(e) => { setPassword(e.target.value); }} placeholder={store.currentUser.password} />
+                            <label for="exampleFormControlInput1" class="form-label mt-3 ">País</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" value={country}
+                                onChange={(e) => { setCountry(e.target.value); }} placeholder={store.currentUser.country} />
+                            <label for="exampleFormControlInput1" class="form-label mt-3">City</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" value={city}
+                                onChange={(e) => { setCity(e.target.value); }} placeholder={store.currentUser.city} />
                             <div class="d-flex justify-content-end">
-                                <button className="mb-5 mt-5 btn btn-danger btn-sm">Guardar Cambios </button>
+                                <button className="mb-5 mt-5 btn btn-danger btn-sm" onClick={(e) => {
+                                    e.preventDefault();
+                                    actions.getUpdateUser();
+                                }}>Guardar Cambios </button>
                             </div>
                         </div>
                     ) : null}

@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			caches: [],
 			cachesToShow: [],
 			userActive: null,
+			currentUser: ""
 		},
 
 		actions: {
@@ -29,8 +30,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				);
 				const data = await response.json();
+				console.log(data)
 				if (response.ok) setStore({ userActive: true });
 			},
+
+			getCurrentUser: async () => {
+				const response = await fetch(
+					process.env.BACKEND_URL + "/api/current-user",
+					{
+						headers: {
+							Authorization: "Bearer " + localStorage.getItem("token"),
+						},
+					}
+				);
+				const data = await response.json();
+				console.log(data)
+				if (response.ok) setStore({ currentUser: data });
+			},
+
+			getUpdateUser: async () => {
+				const { currentUser } = getStore();
+				const response = await fetch(process.env.BACKEND_URL + "/api/updateUser-user", {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + localStorage.getItem("token"),
+					},
+					body: JSON.stringify({
+						"email": currentUser.email,
+						"name": currentUser.name,
+						"country": currentUser.country,
+						"city": currentUser.city,
+						"date_of_birth": currentUser.date_of_birth,
+						"password": currentUser.password
+
+					}),
+				});
+				const data = await response.json();
+				console.log(data);
+				if (response.ok) setStore({ currentUser: data });
+			},
+
+
+
+
+
 
 			logout: () => {
 				try {
