@@ -7,6 +7,8 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+import cloudinary
+import cloudinary.uploader
 
 api = Blueprint('api', __name__)
 
@@ -26,6 +28,25 @@ def current_user_email():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     return jsonify({"response": "Hola"}), 200
+
+
+@api.route('/upload', methods=['POST'])
+@jwt_required()
+def handle_upload():
+    userid = get_jwt_identity()
+    user= User.query.get(userid)
+    result= cloudinary.uploader.upload(request.files['profile_image'])
+
+    user.profile_image_url= result['secure_url']
+    print(result['secure_url'])
+    
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify("All good"), 200
+
+
+
 
 @api.route('/cache', methods=['GET'])
 def get_caches():

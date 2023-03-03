@@ -15,7 +15,7 @@ class User(db.Model):
     country = db.Column(db.String(255), nullable=True)
     city = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    images = db.Column(db.String(255), nullable=True)
+    profile_image_url = db.Column(db.String(255), nullable=True, unique=True)
     ig = db.Column(db.String(255),nullable=True)
     fb = db.Column(db.String(255),nullable=True)
     twitter = db.Column(db.String(255),nullable=True)
@@ -23,6 +23,11 @@ class User(db.Model):
     blogs = db.relationship('Blog', backref='blog_creator')
     caches_found = db.relationship('Cache', secondary=cache_found, backref=db.backref('users_found'))
     caches = db.relationship('Cache', backref='user_creator')
+    
+    def serialize(self):
+        return {
+            "profile_image_url": self.profile_image_url,
+        }
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
