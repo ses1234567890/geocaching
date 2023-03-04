@@ -23,8 +23,10 @@ export const UploadImage = props => {
             <div className="m-3">
                 <p>Puede cargar un archivo JPG, GIF o PNG. El límite de tamaño de archivo es de 4 MB.</p>
                 <form onSubmit={uploadImage}>
-                    <input type="file" onChange={(e) => setFiles(e.target.files)} />
-                    <button className="mb-3 btn btn-danger btn-sm">Subir Foto</button>
+                    <div className="form-group">
+                        <input type="file" className="form-control-file" onChange={(e) => setFiles(e.target.files)} />
+                    </div>
+                    <button className="btn btn-danger btn-sm mt-3">Subir Foto</button>
                 </form>
             </div>
         </>
