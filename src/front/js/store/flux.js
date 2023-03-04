@@ -42,6 +42,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+
+			uploadImage: async (body, apiURL) => {
+				console.log(body)
+				const options = {
+					method: "POST",
+					headers: {
+						Authorization: "Bearer " + localStorage.getItem("token"),
+					},
+					body: body
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + apiURL, options)
+				if (response.status == 200) { return response.json() }
+			}
 		}
 	};
 };

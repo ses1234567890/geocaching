@@ -43,7 +43,7 @@ def handle_upload():
     db.session.add(user)
     db.session.commit()
 
-    return jsonify("All good"), 200
+    return jsonify(user.profile_image_url), 200
 
 
 

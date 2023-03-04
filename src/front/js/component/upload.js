@@ -1,0 +1,37 @@
+import React, { useState, useContext } from "react";
+import propTypes, { string } from "prop-types";
+import { Context } from "../store/appContext";
+
+
+export const UploadImage = props => {
+    const { store, actions } = useContext(Context);
+    const [files, setFiles] = useState(null)
+    const [url, setUrl] = useState(props.urlImage)
+    const uploadImage = async (evt) => {
+        evt.preventDefault();
+        console.log("This are the files", files);
+
+        let body = new FormData();
+        body.append("profile_image", files[0]);
+        const url = await actions.uploadImage(body, props.apiURL)
+        setUrl(url)
+    };
+
+    return (
+        <>
+            <img src={url} className="img-thumbnail w-25" alt="..." />
+            <div className="m-3">
+                <p>Puede cargar un archivo JPG, GIF o PNG. El límite de tamaño de archivo es de 4 MB.</p>
+                <form onSubmit={uploadImage}>
+                    <input type="file" onChange={(e) => setFiles(e.target.files)} />
+                    <button className="mb-3 btn btn-danger btn-sm">Subir Foto</button>
+                </form>
+            </div>
+        </>
+    )
+};
+
+UploadImage.propTypes = {
+    urlImage: string,
+    apiURL: string,
+}
