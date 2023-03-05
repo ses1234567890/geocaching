@@ -14,9 +14,6 @@ export const NavbarNuevo = () => {
     const [showSearch, setShowSearch] = useState(false);
 
 
-    useEffect(() => {
-        setShowSearch();
-      }, [location]);
       
 
     const mostrarBuscador = () => {
@@ -52,7 +49,7 @@ export const NavbarNuevo = () => {
                 {store.userActive ? (
                     <>
                         <li className="nav-item d-none d-lg-block">
-                            <Link to="/demo" className="nav-link active  " aria-current="page">
+                            <Link to="/demo" className="nav-link active " onClick={()=> setShowSearch(false)} aria-current="page">
                                 Home
                             </Link>
                         </li>

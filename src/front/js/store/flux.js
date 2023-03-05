@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			caches: [],
 			cachesToShow: [],
 			userActive: null,
-			currentUser: ""
+			currentUser: {}
 		},
 
 		actions: {
@@ -31,25 +31,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 				const data = await response.json();
 				console.log(data)
-				if (response.ok) setStore({ userActive: true });
+				if (response.ok) setStore({ userActive: true, currentUser: data.user });
 			},
 
-			getCurrentUser: async () => {
-				const response = await fetch(
-					process.env.BACKEND_URL + "/api/current-user",
-					{
-						headers: {
-							Authorization: "Bearer " + localStorage.getItem("token"),
-						},
-					}
-				);
-				const data = await response.json();
-				console.log(data)
-				if (response.ok) setStore({ currentUser: data });
-			},
+			
 
-			getUpdateUser: async () => {
-				const { currentUser } = getStore();
+			getUpdateUser: async (email, name, country, city, date_of_birth) => {
 				const response = await fetch(process.env.BACKEND_URL + "/api/updateUser-user", {
 					method: "PUT",
 					headers: {
@@ -57,18 +44,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Authorization: "Bearer " + localStorage.getItem("token"),
 					},
 					body: JSON.stringify({
-						"email": currentUser.email,
-						"name": currentUser.name,
-						"country": currentUser.country,
-						"city": currentUser.city,
-						"date_of_birth": currentUser.date_of_birth,
-						"password": currentUser.password
+						"email": email,
+						"name": name,
+						"country": country,
+						"city": city,
+						"date_of_birth": date_of_birth,
+						
 
 					}),
 				});
 				const data = await response.json();
 				console.log(data);
-				if (response.ok) setStore({ currentUser: data });
+				if (response.ok) setStore({ currentUser: data.user });
 			},
 
 
@@ -79,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logout: () => {
 				try {
 					localStorage.removeItem("token");
-					setStore({ userActive: null });
+					setStore({ userActive: null, currentUser:{} });
 					return true;
 				} catch (e) {
 					console.log(e);

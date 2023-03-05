@@ -25,14 +25,8 @@ def user_login():
 def current_user_email():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    return jsonify({"response": "Hola"}), 200
+    return jsonify({"response": "Hola", "user": user.serialize()}), 200
 
-@api.route('/current-user', methods=['GET'])
-@jwt_required()
-def current_user():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    return jsonify({"response": "Hola", "email": user.email, "name": user.name, "country": user.country, "city": user.city, "date_of_birth": user.date_of_birth, "password": user.password }), 200    
 
 @api.route('/updateUser-user', methods=['PUT'])
 @jwt_required()
@@ -48,15 +42,13 @@ def Update_user():
     user.name = new_data.get('name', user.name)
     user.country = new_data.get('country', user.country)
     user.city = new_data.get('city', user.city)
-    user.date_of_birth = new_data.get('date_of_birth', user.date_of_birth)
-    user.password = new_data.get('password', user.password)
 
     # guardar los cambios en la base de datos
     
     db.session.commit()
 
     # devolver una respuesta JSON que confirme que se han actualizado los datos
-    return jsonify({"response": "Los datos se han actualizado correctamente", "email": user.email, "name": user.name, "country": user.country, "city": user.city, "date_of_birth": user.date_of_birth, "password": user.password }), 200
+    return jsonify({"response": "Los datos se han actualizado correctamente", "user": user.serialize()}), 200
 
 
 

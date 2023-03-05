@@ -7,21 +7,33 @@ import { Context } from "../store/appContext";
 
 export const MiPerfil = () => {
     const { store, actions } = useContext(Context);
-    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
+    const [password, setPassword] = useState("");
 
 
-    const [showDiv1, setShowDiv1] = useState(false);
+    const [showDiv1, setShowDiv1] = useState(true);
     const [showDiv2, setShowDiv2] = useState(false);
     const [showDiv3, setShowDiv3] = useState(false);
     const [showDiv4, setShowDiv4] = useState(false);
     const [showDiv5, setShowDiv5] = useState(false);
 
+    useEffect(() => {
+        setEmail(store.currentUser.email);
+        setName(store.currentUser.name);
+        setCountry(store.currentUser.country);
+        setCity(store.currentUser.city);
+    }, [store.currentUser])
+
+
+
+
+
+
     const mostrarDatosPersonales = () => {
-        setShowDiv1(!showDiv1);
+        setShowDiv1(true);
         setShowDiv2(false);
         setShowDiv3(false);
         setShowDiv4(false);
@@ -30,7 +42,7 @@ export const MiPerfil = () => {
 
     const mostrarcachesPropios = () => {
         setShowDiv1(false);
-        setShowDiv2(!showDiv2);
+        setShowDiv2(true);
         setShowDiv3(false);
         setShowDiv4(false);
         setShowDiv5(false);
@@ -39,7 +51,7 @@ export const MiPerfil = () => {
     const mostrarcachesEncontrados = () => {
         setShowDiv1(false);
         setShowDiv2(false);
-        setShowDiv3(!showDiv3);
+        setShowDiv3(true);
         setShowDiv4(false);
         setShowDiv5(false);
     };
@@ -49,7 +61,7 @@ export const MiPerfil = () => {
         setShowDiv1(false);
         setShowDiv2(false);
         setShowDiv3(false);
-        setShowDiv4(!showDiv4);
+        setShowDiv4(true);
         setShowDiv5(false);
     };
 
@@ -58,10 +70,10 @@ export const MiPerfil = () => {
         setShowDiv2(false);
         setShowDiv3(false);
         setShowDiv4(false);
-        setShowDiv5(!showDiv5);
+        setShowDiv5(true);
     };
 
-    
+
 
     return (
         <div className="container mb-5">
@@ -110,7 +122,7 @@ export const MiPerfil = () => {
                             <div class="d-flex justify-content-end">
                                 <button className="mb-5 mt-5 btn btn-danger btn-sm" onClick={(e) => {
                                     e.preventDefault();
-                                    actions.getUpdateUser();
+                                    actions.getUpdateUser(email, name, country, city);
                                 }}>Guardar Cambios </button>
                             </div>
                         </div>

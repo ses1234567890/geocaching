@@ -24,6 +24,16 @@ class User(db.Model):
     caches_found = db.relationship('Cache', secondary=cache_found, backref=db.backref('users_found'))
     caches = db.relationship('Cache', backref='user_creator')
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "country": self.country,
+            "city": self.city,
+            "email": self.email,
+        }
+
+
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     title = db.Column(db.String(255), nullable=False)
