@@ -14,11 +14,11 @@ export const NavbarNuevo = () => {
     const [showSearch, setShowSearch] = useState(false);
 
 
-      
+
 
     const mostrarBuscador = () => {
         setShowSearch(!showSearch);
-    
+
     };
 
     return (
@@ -49,31 +49,31 @@ export const NavbarNuevo = () => {
                 {store.userActive ? (
                     <>
                         <li className="nav-item d-none d-lg-block">
-                            <Link to="/demo" className="nav-link active " onClick={()=> setShowSearch(false)} aria-current="page">
+                            <Link to="/demo" className="nav-link active " onClick={() => setShowSearch(false)} aria-current="page">
                                 Home
                             </Link>
                         </li>
-                        <li className="nav-item d-none d-lg-block">
+                        <li className="nav-item d-none d-lg-block" onClick={() => setShowSearch(false)}>
                             <Link to="/mi-Perfil" className="nav-link active" aria-current="page">
                                 Faqs
                             </Link>
                         </li>
-                        <li className="nav-item d-none d-lg-block ">
+                        <li className="nav-item d-none d-lg-block" onClick={() => setShowSearch(false)}>
                             <Link to="/blog" className="nav-link active " aria-current="page">
                                 Blog
                             </Link>
                         </li>
-                        <li className="nav-item dropdown d-none d-lg-block">
+                        <li className="nav-item dropdown d-none d-lg-block" onClick={() => setShowSearch(false)}>
                             <Link to="/" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                                 cachés
                             </Link>
                             <ul className="dropdown-menu ">
-                                <li className="nav-item d-none d-lg-block  ">
+                                <li className="nav-item d-none d-lg-block " onClick={() => setShowSearch(false)}>
                                     <Link to="/tipos-de-caches" className="  nav-link active desplegable" aria-current="page">
                                         Tipos de Cachés
                                     </Link>
                                 </li>
-                                <li className="nav-item d-none d-lg-block de">
+                                <li className="nav-item d-none d-lg-block de" onClick={() => setShowSearch(false)}>
                                     <Link to="/reg_cache" className="  nav-link active desplegable" aria-current="page">
                                         Registro de Cachés
                                     </Link>
@@ -106,8 +106,8 @@ export const NavbarNuevo = () => {
                             </Link>
                         </li>
                         <li className="nav-item d-none d-lg-block">
-                                    <button type="button" class="btn btn-light" onClick={mostrarBuscador}><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                                </li>
+                            <button type="button" class="btn btn-light" onClick={mostrarBuscador}><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                        </li>
 
 
                     </>
@@ -139,9 +139,9 @@ export const NavbarNuevo = () => {
 
 
             </ul>
-            
+
             {showSearch ? (
-            <Buscador/>) : null}
+                <Buscador />) : null}
 
             <div className=" Orbital position-fixed end-0 mx-5 d-md-none">
                 <button type="button" className="  btn btn-secondary btn-floating d-block d-md-none " data-bs-toggle="dropdown" aria-expanded="false">
@@ -183,6 +183,7 @@ export const NavbarNuevo = () => {
                                     </li>
                                 </ul>
                             </li>
+                            
 
                             <li><hr className="dropdown-divider" /></li>
                             <li className="nav-item">

@@ -8,9 +8,18 @@ import { Buscador } from "../component/buscador";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
+    const [city, setCity] = useState("");
+    const [name, setName] = useState("");
+    const [id, setId] = useState("");
 
 
 
+	useEffect(() => {
+        setId(store.caches.id);
+        setName(store.caches.name);
+        setCity(store.caches.city);
+    }, [store.caches])
+	
 	return (
 		
 
@@ -51,6 +60,7 @@ export const Demo = () => {
 				</div>
 
 			</div>
+			
 
 		</div>
 	);

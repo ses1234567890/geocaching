@@ -139,22 +139,25 @@ export const PerfilCache = () => {
                     ) : null}
                     {selectedDiv3 ? (
                         <div className="container">
-                            <h2 className="text-center mb-5 mt-5">Registra Hallazgo de este Caché</h2>
-                            <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mb-3">
+                            <h2 className="text-center my-3">Registra Hallazgo de este Caché</h2>
+                            <div className="row">
+                                <div class="mb-3">
+                                    <input class="form-control text-dark bg-opacity-10 border border-danger" type="text" value={`Caché ${perfilDetails.name}`} aria-label="Disabled input example" disabled readonly />
+                                </div>
+                                <div class="">
+                                    <textarea class="form-control bg-secondary  p-2 text-dark bg-opacity-10 border border-danger" id="exampleFormControlTextarea1" placeholder="Describe tu hallazgo" rows="3"></textarea>
+                                </div>
+                                <div class="mt-3">
+                                    <input class="form-control p-2 text-dark bg-opacity-10 border border-danger" type="file" id="formFileMultiple" multiple />
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-center my-4">
+                                        <Link to="/enhorabuena">
+                                            <button type="button " class="btn btn-danger">Registrar el hallazgo de este Caché <i class="fa-regular fa-star"></i></button>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                            <nav aria-label="Page navigation example mt-5" >
-                                <ul className="pagination justify-content-center">
-                                    <li className="page-item disabled" >
-                                        <a className="page-link">Previous</a>
-                                    </li>
-                                    <li className="page-item " ><a className="page-link" href="#">1</a></li>
-                                    <li className="page-item "><a className="page-link" href="#">2</a></li>
-                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
                     ) : null}
                     {selectedDiv4 ? (
