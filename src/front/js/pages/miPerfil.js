@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Cluster } from "../component/cluster";
 import { Context } from "../store/appContext";
+import { UploadImage } from "../component/upload";
 
 
 
 export const MiPerfil = () => {
     const { store, actions } = useContext(Context);
+    const [urlImage, seturlImage] = useState("https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [country, setCountry] = useState("");
@@ -254,11 +256,7 @@ export const MiPerfil = () => {
                                 <h2 className="text-center mb-5">Perfil</h2>
                             </div>
                             <div className="d-flex align-items-end ">
-                                <img src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg" class="img-thumbnail w-25" alt="..." />
-                                <div className="m-3">
-                                    <p>Puede cargar un archivo JPG, GIF o PNG. El límite de tamaño de archivo es de 4 MB.</p>
-                                    <button className="mb-3 btn btn-danger btn-sm">Subir Foto </button>
-                                </div>
+                                <UploadImage urlImage={urlImage} apiURL="/api/upload" />
                             </div>
                             <label for="exampleFormControlInput1" class="form-label mt-3">Nombre</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" value={name}
@@ -369,7 +367,7 @@ export const MiPerfil = () => {
                                 <button type="button" class="btn btn-danger btn-sm">Actualizar Cambios</button>
                             </div>
                         </div>
-                    )  : null}
+                    ) : null}
 
                 </div>
             </div>

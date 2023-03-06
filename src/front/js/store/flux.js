@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) setStore({ userActive: true, currentUser: data.user });
 			},
 
-			
+
 
 			getUpdateUser: async (email, name, country, city, date_of_birth) => {
 				const response = await fetch(process.env.BACKEND_URL + "/api/updateUser-user", {
@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"country": country,
 						"city": city,
 						"date_of_birth": date_of_birth,
-						
+
 
 					}),
 				});
@@ -66,13 +66,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logout: () => {
 				try {
 					localStorage.removeItem("token");
-					setStore({ userActive: null, currentUser:{} });
+					setStore({ userActive: null, currentUser: {} });
 					return true;
 				} catch (e) {
 					console.log(e);
 					return false;
 				}
 			},
+
+			uploadImage: async (body, apiURL) => {
+				console.log(body)
+				const options = {
+					method: "POST",
+					headers: {
+						Authorization: "Bearer " + localStorage.getItem("token"),
+					},
+					body: body
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + apiURL, options)
+				if (response.status == 200) { return response.json() }
+			}
 		}
 	};
 };

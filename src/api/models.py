@@ -15,7 +15,7 @@ class User(db.Model):
     country = db.Column(db.String(255), nullable=True)
     city = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    images = db.Column(db.String(255), nullable=True)
+    profile_image_url = db.Column(db.String(255), nullable=True, unique=True)
     ig = db.Column(db.String(255),nullable=True)
     fb = db.Column(db.String(255),nullable=True)
     twitter = db.Column(db.String(255),nullable=True)
@@ -32,6 +32,7 @@ class User(db.Model):
             "country": self.country,
             "city": self.city,
             "email": self.email,
+            "profile_image_url": self.profile_image_url,
         }
 
 
