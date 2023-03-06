@@ -25,7 +25,32 @@ def user_login():
 def current_user_email():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    return jsonify({"response": "Hola"}), 200
+    return jsonify({"response": "Hola", "user": user.serialize()}), 200
+
+
+@api.route('/updateUser-user', methods=['PUT'])
+@jwt_required()
+def Update_user():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    # obtener los nuevos datos del usuario del cuerpo de la solicitud
+    new_data = request.get_json()
+
+    # actualizar el objeto user con los nuevos valores
+    user.email = new_data.get('email', user.email)
+    user.name = new_data.get('name', user.name)
+    user.country = new_data.get('country', user.country)
+    user.city = new_data.get('city', user.city)
+
+    # guardar los cambios en la base de datos
+    
+    db.session.commit()
+
+    # devolver una respuesta JSON que confirme que se han actualizado los datos
+    return jsonify({"response": "Los datos se han actualizado correctamente", "user": user.serialize()}), 200
+
+
 
 @api.route('/cache', methods=['GET'])
 def get_caches():

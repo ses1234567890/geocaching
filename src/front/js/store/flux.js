@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			caches: [],
 			cachesToShow: [],
 			userActive: null,
+			currentUser: {}
 		},
 
 		actions: {
@@ -29,13 +30,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				);
 				const data = await response.json();
-				if (response.ok) setStore({ userActive: true });
+				console.log(data)
+				if (response.ok) setStore({ userActive: true, currentUser: data.user });
 			},
+
+			
+
+			getUpdateUser: async (email, name, country, city, date_of_birth) => {
+				const response = await fetch(process.env.BACKEND_URL + "/api/updateUser-user", {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + localStorage.getItem("token"),
+					},
+					body: JSON.stringify({
+						"email": email,
+						"name": name,
+						"country": country,
+						"city": city,
+						"date_of_birth": date_of_birth,
+						
+
+					}),
+				});
+				const data = await response.json();
+				console.log(data);
+				if (response.ok) setStore({ currentUser: data.user });
+			},
+
+
+
+
+
 
 			logout: () => {
 				try {
 					localStorage.removeItem("token");
-					setStore({ userActive: null });
+					setStore({ userActive: null, currentUser:{} });
 					return true;
 				} catch (e) {
 					console.log(e);
