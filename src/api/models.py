@@ -23,6 +23,11 @@ class User(db.Model):
     blogs = db.relationship('Blog', backref='blog_creator')
     caches_found = db.relationship('Cache', secondary=cache_found, backref=db.backref('users_found'))
     caches = db.relationship('Cache', backref='user_creator')
+    def serialize(self):
+        return {
+            "id": self.id,
+            "is_admin": self.is_admin,
+        }
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -36,6 +41,8 @@ class Cache(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     is_approved = db.Column(db.Boolean, nullable=False, default=False)
+    is_declined = db.Column(db.Boolean, nullable=False, default=False)
+    is_pending = db.Column(db.Boolean, nullable=False, default=True)
     description = db.Column(db.Text, nullable=False)
     country = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
