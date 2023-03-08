@@ -7,6 +7,8 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+import cloudinary
+import cloudinary.uploader
 
 api = Blueprint('api', __name__)
 
@@ -25,7 +27,46 @@ def user_login():
 def current_user_email():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    return jsonify({"response": user.serialize()}), 200
+    return jsonify({"response": "Hola", "user": user.serialize()}), 200
+
+
+@api.route('/updateUser-user', methods=['PUT'])
+@jwt_required()
+def Update_user():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    # obtener los nuevos datos del usuario del cuerpo de la solicitud
+    new_data = request.get_json()
+
+    # actualizar el objeto user con los nuevos valores
+    user.email = new_data.get('email', user.email)
+    user.name = new_data.get('name', user.name)
+    user.country = new_data.get('country', user.country)
+    user.city = new_data.get('city', user.city)
+
+    # guardar los cambios en la base de datos
+    
+    db.session.commit()
+
+    # devolver una respuesta JSON que confirme que se han actualizado los datos
+    return jsonify({"response": "Los datos se han actualizado correctamente", "user": user.serialize()}), 200
+
+@api.route('/upload', methods=['POST'])
+@jwt_required()
+def handle_upload():
+    userid = get_jwt_identity()
+    user= User.query.get(userid)
+    result= cloudinary.uploader.upload(request.files['profile_image'])
+
+    user.profile_image_url= result['secure_url']
+    print(result['secure_url'])
+    
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify(user.profile_image_url), 200
+
 
 @api.route('/cache', methods=['GET'])
 def get_caches():

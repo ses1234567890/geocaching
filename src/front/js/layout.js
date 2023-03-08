@@ -16,6 +16,8 @@ import { CachesMasImpresionantes } from "./pages/cachesMasImpresionantes";
 import { SeguridadBusquedaCaches } from "./pages/seguridadBusquedaCaches";
 import { ResolverCaches } from "./pages/resolverCaches";
 import { CachesUrbanos } from "./pages/cachesUrbanos";
+import { PaginaEnhorabuena } from "./pages/paginaEnhorabuena";
+
 import { CachesFamilia} from "./pages/cachesFamilia";
 import { Blog} from "./pages/blog";
 import { TiposDeCaches} from "./pages/tiposDeCaches";
@@ -50,6 +52,7 @@ const Layout = () => {
             <Route element={<MiPerfil />} path="/mi-Perfil" />
             <Route element={<Register />} path="/register" />
             <Route element={<Cache />} path="/reg_cache" />
+            <Route element={<PaginaEnhorabuena />} path="/enhorabuena" />
             <Route element={<PostGuiaPrincipiantes />} path="/como-empezar-a-buscar-caches-Guia-para-principiantes" />
             <Route element={<ComoCrearUnCache />} path="/como-crear-un-cache-Consejos-y-trucos" />
             <Route element={<HerramientasBusqueda />} path="/las-mejores-herramientas-para-la-busqueda-de-caches" />

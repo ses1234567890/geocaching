@@ -15,7 +15,7 @@ class User(db.Model):
     country = db.Column(db.String(255), nullable=True)
     city = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    images = db.Column(db.String(255), nullable=True)
+    profile_image_url = db.Column(db.String(255), nullable=True, unique=True)
     ig = db.Column(db.String(255),nullable=True)
     fb = db.Column(db.String(255),nullable=True)
     twitter = db.Column(db.String(255),nullable=True)
@@ -23,9 +23,15 @@ class User(db.Model):
     blogs = db.relationship('Blog', backref='blog_creator')
     caches_found = db.relationship('Cache', secondary=cache_found, backref=db.backref('users_found'))
     caches = db.relationship('Cache', backref='user_creator')
+    # commets = db.relationship('Comment', backref='user')
     def serialize(self):
         return {
             "id": self.id,
+            "name": self.name,
+            "country": self.country,
+            "city": self.city,
+            "email": self.email,
+            "profile_image_url": self.profile_image_url,
             "is_admin": self.is_admin,
         }
 
@@ -56,6 +62,10 @@ class Cache(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     # favorites = db.relationship('Favorite')
     images = db.relationship('Image')
+    # commets = db.relationship('Comment', backref='cache')
+    # images = db.relationship('Image', backref='cache')
+
+    
     def serialize(self):
         return {
             "id": self.id,
@@ -68,6 +78,7 @@ class Cache(db.Model):
             "coordinates_y": self.coordinates_y,
             "coordinates_x": self.coordinates_x,
             "size": self.size,
+            "difficulty": self.difficulty,
             "qr_url": self.qr_url,
             "owner_id": self.owner_id,
         }
@@ -76,6 +87,9 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(255), nullable=False)
     cache_id = db.Column(db.Integer, db.ForeignKey('cache.id'), nullable=False)
+#   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
 
 # class Comment(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
@@ -84,8 +98,7 @@ class Image(db.Model):
 #     url_image = db.Column(db.String(255))
 #     cache_id = db.Column(db.Integer, db.ForeignKey('cache.id'), nullable=False)
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     cache = db.relationship('Cache', foreign_keys=[cache_id], backref='comments')
-#     user = db.relationship('User', foreign_keys=[user_id], backref='comments')
+
 
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
