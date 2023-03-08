@@ -30,8 +30,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				);
 				const data = await response.json();
-				if (response.ok) setStore({ userActive: true, admin: data.response.is_admin });
+				console.log(data)
+				if (response.ok) setStore({ userActive: true, currentUser: data.user });
 			},
+
+
 
 			getUpdateUser: async (email, name, country, city, date_of_birth) => {
 				const response = await fetch(process.env.BACKEND_URL + "/api/updateUser-user", {
@@ -54,6 +57,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(data);
 				if (response.ok) setStore({ currentUser: data.user });
 			},
+
+
+
+
+
 
 			logout: () => {
 				try {
