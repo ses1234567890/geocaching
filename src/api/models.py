@@ -33,8 +33,14 @@ class User(db.Model):
             "city": self.city,
             "email": self.email,
             "profile_image_url": self.profile_image_url,
+            "caches_found": [x.serialize()for x in self.caches_found],
         }
-
+    def rank(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "caches": len(self.caches_found)
+        }
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)

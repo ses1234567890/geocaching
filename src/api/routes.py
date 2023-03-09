@@ -44,6 +44,7 @@ def Update_user():
     user.name = new_data.get('name', user.name)
     user.country = new_data.get('country', user.country)
     user.city = new_data.get('city', user.city)
+    user.caches_found  = new_data.get('cache_found', user.caches_found)
 
     # guardar los cambios en la base de datos
     
@@ -154,3 +155,16 @@ def cache_register():
     db.session.commit()
     return jsonify({"response": "Cache registered successfully"}), 200   
  
+@api.route('/ranking_users', methods=['GET'])
+@jwt_required()
+def ranking_users():
+    # Aquí deberías obtener los datos de los usuarios y ordenarlos por puntuación
+    # En este ejemplo, simplemente devolvemos una lista de diccionarios como si fuera la respuesta a la petición
+    print("@@@@@@@")
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    users = User.query.all()
+    users_rank = [x.rank() for x in users]
+    print(users_rank)
+    sorted_rank = sorted(users_rank,reverse=True, key=lambda x : x["caches"])
+    return jsonify({"my_rank": user.rank(),"all_rank": sorted_rank }),200
