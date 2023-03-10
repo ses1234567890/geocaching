@@ -27,6 +27,12 @@ export const MiPerfil = () => {
     const [showDiv10, setShowDiv10] = useState(false);
     const [showDiv11, setShowDiv11] = useState(false);
     const [showDiv12, setShowDiv12] = useState(false);
+    const [showDiv13, setShowDiv13] = useState(false);
+    const [pendingCaches, setPendingCaches] = useState([]);
+    const [approvedCaches, setApprovedCaches] = useState([]);
+    const [declinedCaches, setDeclinedCaches] = useState([]);
+    const [getPendingCaches, setGetPendingCaches] = useState([]);
+    const [error, setError] = useState("");
 
 
     useEffect(() => {
@@ -34,8 +40,100 @@ export const MiPerfil = () => {
         setName(store.currentUser.name);
         setCountry(store.currentUser.country);
         setCity(store.currentUser.city);
+        getCachesPendingUser();
+        getCachesApproved();
+        getCachesDeclined();
     }, [store.currentUser])
 
+    useEffect(() => {
+        if (store.admin) {
+            getCachesPending();
+        }
+    }, [store.admin])
+
+    const acceptCache = async (id) => {
+        const response = await fetch(
+            process.env.BACKEND_URL + "/api/admin_accept_cache",
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                body: JSON.stringify({
+                    id: id,
+                }),
+            }
+        );
+        const responsetoJson = await response.json();
+        if (response.ok) {
+            getCachesPending();
+        } else {
+            setError(responsetoJson.response);
+        }
+    };
+
+    const declineCache = async (id) => {
+        const response = await fetch(
+            process.env.BACKEND_URL + "/api/admin_decline_cache",
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                body: JSON.stringify({
+                    id: id,
+                }),
+            }
+        );
+        const responsetoJson = await response.json();
+        if (response.ok) {
+            getCachesPending();
+        } else {
+            setError(responsetoJson.response);
+        }
+    };
+
+    const getCachesPending = async () => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/admin_cache_moderation", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        const data = await response.json();
+        setPendingCaches(data.results)
+    };
+
+    const getCachesApproved = async () => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/user_cache_approved", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        const data = await response.json();
+        setApprovedCaches(data.results)
+    };
+
+    const getCachesDeclined = async () => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/user_cache_declined", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        const data = await response.json();
+        setDeclinedCaches(data.results)
+    };
+
+    const getCachesPendingUser = async () => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/user_cache_pending", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        const data = await response.json();
+        setGetPendingCaches(data.results)
+    };
 
     const mostrarDatosPersonales = () => {
         setShowDiv1(true);
@@ -50,6 +148,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
     };
 
     const mostrarcachesPropios = () => {
@@ -65,6 +164,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -81,6 +181,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -98,6 +199,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -114,6 +216,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -130,6 +233,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -146,6 +250,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -162,6 +267,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -178,6 +284,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -210,6 +317,7 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(true);
         setShowDiv12(false);
+        setShowDiv13(false);
 
     };
 
@@ -226,19 +334,35 @@ export const MiPerfil = () => {
         setShowDiv10(false);
         setShowDiv11(false);
         setShowDiv12(true);
+        setShowDiv13(false);
+
+    };
+
+    const mostrarAdmin = () => {
+        setShowDiv1(false);
+        setShowDiv2(false);
+        setShowDiv3(false);
+        setShowDiv4(false);
+        setShowDiv5(false);
+        setShowDiv6(false);
+        setShowDiv7(false);
+        setShowDiv8(false);
+        setShowDiv9(false);
+        setShowDiv10(false);
+        setShowDiv11(false);
+        setShowDiv12(false);
+        setShowDiv13(true);
 
     };
 
 
 
-
-
     return (
         <div className="container my-5">
-            <h1 className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "mb-5" : "text-center mb-5"}`}>GeoCaching - My Profile</h1>
+            <h1 className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 || showDiv13 ? "mb-5" : "text-center mb-5"}`}>GeoCaching - My Profile</h1>
             <div className=" row">
 
-                <div className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 ? "col-4" : "col-12"} d-flex flex-column`}>
+                <div className={`${showDiv1 || showDiv2 || showDiv3 || showDiv4 || showDiv5 || showDiv13 ? "col-4" : "col-12"} d-flex flex-column`}>
 
 
                     <button className={`${showDiv1 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"} btn btn-outline-primary `} onClick={mostrarDatosPersonales}>Datos Personales </button>
@@ -246,6 +370,7 @@ export const MiPerfil = () => {
                     <button className={`${showDiv3 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"} btn btn-outline-primary `} onClick={mostrarcachesEncontrados}> Cachés Encontrados </button>
                     <button className={`${showDiv4 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"} btn btn-outline-primary `} onClick={mostrarCachesFavoritos}> Cachés Favoritos </button>
                     <button className={`${showDiv5 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"} btn btn-outline-primary `} onClick={mostrarPostsFavoritos}> Posts Favoritos </button>
+                    {store.admin ? <button className={`${showDiv13 ? "w-75 mx-auto bg-primary text-white" : "w-75 mx-auto"} btn btn-outline-primary mt-5`} onClick={mostrarAdmin}> Admin panel </button> : null}
                 </div>
 
                 <div className="col-8">
@@ -323,17 +448,67 @@ export const MiPerfil = () => {
                     {showDiv6 ? (
                         <div>
                             <h2 className="text-center my-5">Mis Cachés Enviados</h2>
-
+                            <div className="container mb-5 row row-cols-lg-2 mx-auto gx-3 text-center">
+                                {getPendingCaches.map((caches) => {
+                                    return (
+                                        <div className="card" key={caches.id}>
+                                            <img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+                                            <div className="card-body">
+                                                <h4 className="card-text">{caches.name}</h4>
+                                                <h5 className="card-title">{caches.state}, {caches.city}</h5>
+                                                <Link to={"/perfil-cache/" + caches.id} className="text-decoration-none">
+                                                    <button className="btn btn-primary">Ver Detalles</button>
+                                                </Link>
+                                                {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     ) : null}
                     {showDiv7 ? (
                         <div>
                             <h2 className="text-center my-5">Mis Cachés Aprobados</h2>
+                            <div className="container mb-5 row row-cols-lg-2 mx-auto gx-3 text-center">
+                                {approvedCaches.map((caches) => {
+                                    return (
+                                        <div className="card" key={caches.id}>
+                                            <img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+                                            <div className="card-body">
+                                                <h4 className="card-text">{caches.name}</h4>
+                                                <h5 className="card-title">{caches.state}, {caches.city}</h5>
+                                                <Link to={"/perfil-cache/" + caches.id} className="text-decoration-none">
+                                                    <button className="btn btn-primary">Ver Detalles</button>
+                                                </Link>
+                                                {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     ) : null}
                     {showDiv8 ? (
                         <div>
                             <h2 className="text-center my-5">Mis Cachés Rechazados</h2>
+                            <div className="container mb-5 row row-cols-lg-2 mx-auto gx-3 text-center">
+                                {declinedCaches.map((caches) => {
+                                    return (
+                                        <div className="card" key={caches.id}>
+                                            <img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+                                            <div className="card-body">
+                                                <h4 className="card-text">{caches.name}</h4>
+                                                <h5 className="card-title">{caches.state}, {caches.city}</h5>
+                                                <Link to={"/perfil-cache/" + caches.id} className="text-decoration-none">
+                                                    <button className="btn btn-primary">Ver Detalles</button>
+                                                </Link>
+                                                {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     ) : null}
                     {showDiv9 ? (
@@ -368,7 +543,42 @@ export const MiPerfil = () => {
                             </div>
                         </div>
                     ) : null}
-
+                    {showDiv13 ? (
+                        <div>
+                            <h2 className="text-center mb-5">Admin Panel</h2>
+                            <div className="container mb-5 row row-cols-lg-2 mx-auto gx-3 text-center">
+                                {pendingCaches.map((caches) => {
+                                    return (
+                                        <div className="card" key={caches.id}>
+                                            <img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+                                            <div className="card-body">
+                                                <h4 className="card-text">{caches.name}</h4>
+                                                <h5 className="card-title">{caches.state}, {caches.city}</h5>
+                                                <button
+                                                    className="btn btn-success"
+                                                    onClick={(e) => {
+                                                        setError(false);
+                                                        acceptCache(caches.id);
+                                                    }}
+                                                >Aprobar</button>
+                                                <button
+                                                    className="btn btn-danger"
+                                                    onClick={(e) => {
+                                                        setError(false);
+                                                        declineCache(caches.id);
+                                                    }}
+                                                >Rechazar</button>
+                                                <Link to={"/perfil-cache/" + caches.id} className="text-decoration-none">
+                                                    <button className="btn btn-primary">Ver Detalles</button>
+                                                </Link>
+                                                {error ? <p className="alert alert-warning mt-2">{error}</p> : null}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
             </div>
 

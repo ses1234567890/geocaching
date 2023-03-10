@@ -27,7 +27,7 @@ def user_login():
 def current_user_email():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    return jsonify({"response": "Hola", "user": user.serialize()}), 200
+    return jsonify({"response": user.serialize()}), 200
 
 
 @api.route('/updateUser-user', methods=['PUT'])
@@ -168,3 +168,86 @@ def ranking_users():
     print(users_rank)
     sorted_rank = sorted(users_rank,reverse=True, key=lambda x : x["caches"])
     return jsonify({"my_rank": user.rank(),"all_rank": sorted_rank }),200
+
+@api.route('/admin_cache_moderation', methods=['POST'])
+@jwt_required()
+def status_cache():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if user.id_admin:
+        body_is_accepted = request.json.get("is_accepted")
+        body_is_declined = request.json.get("is_declined")
+        body_is_pending = request.json.get("is_pending")
+        cache_status = Cache(
+            is_accepted=body_is_accepted,
+            is_declined=body_is_declined,
+            is_pending=body_is_pending,
+            )
+        db.session.add(cache_status)
+        db.session.commit()
+        return jsonify({"response": "Cache status changed successfully"}), 200
+    return jsonify({"error": "Not authorised"}), 400
+
+@api.route('/admin_cache_moderation', methods=['GET'])
+@jwt_required()
+def get_status_cache():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if user.is_admin:
+        caches = Cache.query.filter_by(is_pending=True)
+        return jsonify({"results": [cache.serialize() for cache in caches]}), 200
+    return jsonify({"error": "Not authorised"}), 400
+
+@api.route('/admin_accept_cache', methods=['PUT'])
+@jwt_required()
+def change_status_accepted():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if user.is_admin:
+        body_cache_id = request.json.get("id")
+        cache = Cache.query.get(body_cache_id)
+        cache.is_approved = True
+        cache.is_declined = False
+        cache.is_pending = False
+        db.session.commit()
+        return jsonify({"response": "Cache accepted successfully"}), 200
+    return jsonify({"error": "Not authorised"}), 400
+
+@api.route('/admin_decline_cache', methods=['PUT'])
+@jwt_required()
+def change_status_declined():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if user.is_admin:
+        body_cache_id = request.json.get("id")
+        cache = Cache.query.get(body_cache_id)
+        cache.is_approved = False
+        cache.is_declined = True
+        cache.is_pending = False
+        db.session.commit()
+        return jsonify({"response": "Cache rejected successfully"}), 200
+    return jsonify({"error": "Not authorised"}), 400
+
+@api.route('/user_cache_approved', methods=['GET'])
+@jwt_required()
+def get_status_cache_approved():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    caches = Cache.query.filter_by(owner_id=user_id, is_approved=True)
+    return jsonify({"results": [cache.serialize() for cache in caches]}), 200
+
+@api.route('/user_cache_declined', methods=['GET'])
+@jwt_required()
+def get_status_cache_declined():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    caches = Cache.query.filter_by(owner_id=user_id, is_declined=True)
+    return jsonify({"results": [cache.serialize() for cache in caches]}), 200
+
+@api.route('/user_cache_pending', methods=['GET'])
+@jwt_required()
+def get_status_cache_pending():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    caches = Cache.query.filter_by(owner_id=user_id, is_pending=True)
+    return jsonify({"results": [cache.serialize() for cache in caches]}), 200

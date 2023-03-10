@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9bd17e73ad17
+Revision ID: 36d03ea28552
 Revises: 
-Create Date: 2023-03-01 19:04:15.836740
+Create Date: 2023-03-10 18:36:35.713522
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9bd17e73ad17'
+revision = '36d03ea28552'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,13 +26,14 @@ def upgrade():
     sa.Column('country', sa.String(length=255), nullable=True),
     sa.Column('city', sa.String(length=255), nullable=True),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('images', sa.String(length=255), nullable=True),
+    sa.Column('profile_image_url', sa.String(length=255), nullable=True),
     sa.Column('ig', sa.String(length=255), nullable=True),
     sa.Column('fb', sa.String(length=255), nullable=True),
     sa.Column('twitter', sa.String(length=255), nullable=True),
     sa.Column('password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('profile_image_url')
     )
     op.create_table('blog',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -48,6 +49,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('is_approved', sa.Boolean(), nullable=False),
+    sa.Column('is_declined', sa.Boolean(), nullable=False),
+    sa.Column('is_pending', sa.Boolean(), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('country', sa.String(length=255), nullable=False),
     sa.Column('state', sa.String(length=255), nullable=False),
