@@ -8,20 +8,20 @@ import { Buscador } from "../component/buscador";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-    const [city, setCity] = useState("");
-    const [name, setName] = useState("");
-    const [id, setId] = useState("");
+	const [city, setCity] = useState("");
+	const [name, setName] = useState("");
+	const [id, setId] = useState("");
 
 
 
 	useEffect(() => {
-        setId(store.caches.id);
-        setName(store.caches.name);
-        setCity(store.caches.city);
-    }, [store.caches])
-	
+		setId(store.caches.id);
+		setName(store.caches.name);
+		setCity(store.caches.city);
+	}, [store.caches])
+
 	return (
-		
+
 
 		<div>
 
@@ -35,7 +35,7 @@ export const Demo = () => {
 				<div className="container mb-5 row row-cols-lg-3 mx-auto my-5">
 					<Cluster link="/tipos-de-caches" classboton="d-none" cardBorder="card border-2 border-dark" cardTitle="Cachés" image="https://media.traveler.es/photos/613769fabf63e581e0100e3d/master/w_1600%2Cc_limit/150236.jpg" />
 					<Cluster link="/blog" classboton="d-none" cardBorder="card border-2 border-dark" cardTitle="Blog" image="https://i.blogs.es/199e7b/simon-english-672450-unsplash/840_560.jpeg" />
-					<Cluster link="/blog" classboton="d-none" cardBorder="card border-2 border-dark" cardTitle="Ranking" image="https://unomasunoteam.com/wp-content/uploads/2020/03/en-busca-del-tesoro-team-buildng-main-min.jpg" />
+					<Cluster link="/ranking-usuario" classboton="d-none" cardBorder="card border-2 border-dark" cardTitle="Ranking" image="https://unomasunoteam.com/wp-content/uploads/2020/03/en-busca-del-tesoro-team-buildng-main-min.jpg" />
 				</div>
 			</div>
 
@@ -60,7 +60,7 @@ export const Demo = () => {
 				</div>
 
 			</div>
-			
+
 
 		</div>
 	);

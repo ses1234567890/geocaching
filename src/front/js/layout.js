@@ -18,13 +18,14 @@ import { ResolverCaches } from "./pages/resolverCaches";
 import { CachesUrbanos } from "./pages/cachesUrbanos";
 import { PaginaEnhorabuena } from "./pages/paginaEnhorabuena";
 
-import { CachesFamilia} from "./pages/cachesFamilia";
-import { Blog} from "./pages/blog";
-import { TiposDeCaches} from "./pages/tiposDeCaches";
-import { CachesUbicacion} from "./pages/cachesUbicacion";
-import { CachesSegmentacion} from "./pages/cachesSegmentacion";
-import { CachesTamano} from "./pages/cachesTamano";
-import { CachesDificultad} from "./pages/cachesDificultad";
+import { CachesFamilia } from "./pages/cachesFamilia";
+import { Blog } from "./pages/blog";
+import { TiposDeCaches } from "./pages/tiposDeCaches";
+import { CachesUbicacion } from "./pages/cachesUbicacion";
+import { CachesSegmentacion } from "./pages/cachesSegmentacion";
+import { CachesTamano } from "./pages/cachesTamano";
+import { CachesDificultad } from "./pages/cachesDificultad";
+import { RankingUser } from "./pages/rankingUser";
 
 
 import injectContext from "./store/appContext";
@@ -63,14 +64,14 @@ const Layout = () => {
             <Route element={<CachesFamilia />} path="/como-involucrar-a-los-mas-pequenos-en-la-busqueda-de-caches" />
             <Route element={<Blog />} path="/blog" />
             <Route element={<Buscador />} path="/buscador" />
-
+            <Route element={<RankingUser />} path="/ranking-usuario" />
             <Route element={<TiposDeCaches />} path="/tipos-de-caches" />
-            <Route element={<CachesUbicacion />} path="/caches-ubicacion"/>
-            <Route element={<CachesDificultad />} path="/caches-dificultad"/>
-            <Route element={<CachesTamano />} path="/caches-tamano"/>
-            <Route element={<CachesSegmentacion />} path="/caches/:tipos"/>
+            <Route element={<CachesUbicacion />} path="/caches-ubicacion" />
+            <Route element={<CachesDificultad />} path="/caches-dificultad" />
+            <Route element={<CachesTamano />} path="/caches-tamano" />
+            <Route element={<CachesSegmentacion />} path="/caches/:tipos" />
             <Route element={<h1>Not found!</h1>} />
-            
+
           </Routes>
           <Footer />
         </ScrollToTop>

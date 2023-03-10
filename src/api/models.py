@@ -33,8 +33,15 @@ class User(db.Model):
             "city": self.city,
             "email": self.email,
             "profile_image_url": self.profile_image_url,
+            "caches_found": [x.serialize()for x in self.caches_found],
+            "is_admin": self.is_admin,
         }
-
+    def rank(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "caches": len(self.caches_found)
+        }
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -48,6 +55,8 @@ class Cache(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     is_approved = db.Column(db.Boolean, nullable=False, default=False)
+    is_declined = db.Column(db.Boolean, nullable=False, default=False)
+    is_pending = db.Column(db.Boolean, nullable=False, default=True)
     description = db.Column(db.Text, nullable=False)
     country = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
