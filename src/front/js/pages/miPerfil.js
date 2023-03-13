@@ -383,24 +383,24 @@ export const MiPerfil = () => {
                             <div className="d-flex align-items-end ">
                                 <UploadImage urlImage={urlImage} apiURL="/api/upload" />
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Nombre</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" value={name}
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Nombre</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" value={name}
                                 onChange={(e) => { setName(e.target.value); }} placeholder={store.currentUser.name} />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" value={email}
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Email</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" value={email}
                                 onChange={(e) => { setEmail(e.target.value); }} placeholder={store.currentUser.email} />
-                            <label for="disabledTextInput" class="form-label mt-3 ">Password</label>
-                            <input class="form-control text-dark" type="text" aria-label="Disabled input example" disabled readonly onChange={(e) => { setPassword(e.target.value); }} value={password} placeholder={"..................."} />
+                            <label htmlFor="disabledTextInput" className="form-label mt-3 ">Password</label>
+                            <input className="form-control text-dark" type="text" aria-label="Disabled input example" disabled readOnly onChange={(e) => { setPassword(e.target.value); }} value={password} placeholder={"..................."} />
                             <div className="d-flex justify-content-end my-3">
-                                <button type="button" class="btn btn-primary btn-sm" >Cambiar Contraseña</button>
+                                <button type="button" className="btn btn-primary btn-sm" >Cambiar Contraseña</button>
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label mt-1 ">País</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" value={country}
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-1 ">País</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" value={country}
                                 onChange={(e) => { setCountry(e.target.value); }} placeholder={store.currentUser.country} />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">City</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" value={city}
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">City</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" value={city}
                                 onChange={(e) => { setCity(e.target.value); }} placeholder={store.currentUser.city} />
-                            <div class="d-flex justify-content-end">
+                            <div className="d-flex justify-content-end">
                                 <button className="mb-5 mt-5 btn btn-danger btn-sm" onClick={(e) => {
                                     e.preventDefault();
                                     actions.getUpdateUser(email, name, country, city);
@@ -412,10 +412,10 @@ export const MiPerfil = () => {
                         <div >
                             <h2 className="text-center mb-5">Mis Cachés Registrados</h2>
                             <div className="text-center">
-                                <div class="" aria-label="Basic checkbox toggle button group" >
-                                    <button type="button " class="btn btn-warning mx-2 my-2" onClick={mostrarCachesCreadosEnviados}>Cachés Enviados <i class="fa-solid fa-rocket"></i></button>
-                                    <button type="button " class="btn btn-success mx-2" onClick={mostrarCachesCreadosAprobados}>Cachés Aprobados <i class="fa-solid fa-face-smile"></i></button>
-                                    <button type="button " class="btn btn-danger mx-2 my-2" onClick={mostrarCachesCreadosRechazados} >Cachés Rechazados <i class="fa-solid fa-heart-crack"></i></button>
+                                <div className="" aria-label="Basic checkbox toggle button group" >
+                                    <button type="button " className="btn btn-warning mx-2 my-2" onClick={mostrarCachesCreadosEnviados}>Cachés Enviados <i className="fa-solid fa-rocket"></i></button>
+                                    <button type="button " className="btn btn-success mx-2" onClick={mostrarCachesCreadosAprobados}>Cachés Aprobados <i className="fa-solid fa-face-smile"></i></button>
+                                    <button type="button " className="btn btn-danger mx-2 my-2" onClick={mostrarCachesCreadosRechazados} >Cachés Rechazados <i className="fa-solid fa-heart-crack"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -425,10 +425,10 @@ export const MiPerfil = () => {
                             <h2 className="text-center mb-5">Mis Cachés Encontrados</h2>
                             <div >
                                 <div className="text-center">
-                                    <div class="" aria-label="Basic checkbox toggle button group" >
-                                        <button type="button " class="btn btn-warning mx-2 my-2" onClick={mostrarCachesEncontradosEnviados}>Cachés Enviados <i class="fa-solid fa-rocket"></i></button>
-                                        <button type="button " class="btn btn-success mx-2" onClick={mostrarCachesEncontradosAprobados}>Cachés Aprobados <i class="fa-solid fa-face-smile"></i></button>
-                                        <button type="button " class="btn btn-danger mx-2 my-2" onClick={mostrarCachesEncontradosRechazados} >Cachés Rechazados <i class="fa-solid fa-heart-crack"></i></button>
+                                    <div className="" aria-label="Basic checkbox toggle button group" >
+                                        <button type="button " className="btn btn-warning mx-2 my-2" onClick={mostrarCachesEncontradosEnviados}>Cachés Enviados <i className="fa-solid fa-rocket"></i></button>
+                                        <button type="button " className="btn btn-success mx-2" onClick={mostrarCachesEncontradosAprobados}>Cachés Aprobados <i className="fa-solid fa-face-smile"></i></button>
+                                        <button type="button " className="btn btn-danger mx-2 my-2" onClick={mostrarCachesEncontradosRechazados} >Cachés Rechazados <i className="fa-solid fa-heart-crack"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -532,14 +532,14 @@ export const MiPerfil = () => {
                             <div>
                                 <h2 className="text-center mb-5">Cambiar contraseña</h2>
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Contraseña Actual</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Cambiar contraseña</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" />
-                            <label for="exampleFormControlInput1" class="form-label mt-3">Confirmar contraseña</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" />
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Contraseña Actual</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" />
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Cambiar contraseña</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" />
+                            <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Confirmar contraseña</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" />
                             <div className="d-flex justify-content-end my-3">
-                                <button type="button" class="btn btn-danger btn-sm">Actualizar Cambios</button>
+                                <button type="button" className="btn btn-danger btn-sm">Actualizar Cambios</button>
                             </div>
                         </div>
                     ) : null}

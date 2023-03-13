@@ -64,13 +64,13 @@ export const Buscador = () => {
 					<div className="container mb-5 row row-cols-lg-4 mx-auto gx-3 flex-nowrap overflow-auto pb-3">
 						{cachesToShow.map((cache) => {
 							return (
-								<div class="card" key={cache.id}>
-									<img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" class="card-img-top" alt="..." />
-									<div class="card-body">
-										<h5 class="card-title">{cache.city}</h5>
-										<p class="card-text">{cache.name}</p>
+								<div className="card" key={cache.id}>
+									<img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+									<div className="card-body">
+										<h5 className="card-title">{cache.city}</h5>
+										<p className="card-text">{cache.name}</p>
 										<Link to={"/perfil-cache/" + cache.id} className="text-decoration-none">
-											<a href="#" class="btn btn-primary">Ver Detalles</a>
+											<a href="#" className="btn btn-primary">Ver Detalles</a>
 										</Link>
 									</div>
 								</div>

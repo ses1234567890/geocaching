@@ -21,19 +21,19 @@ export const TiposDeCaches = () => {
                 <h2 className="text-center my-4">Comienza a Explorar</h2>
                 <p className="mb-4">Entra en el emocionante mundo del geocaching. Descubre tesoros ocultos y vive una experiencia única en cada rincón del planeta. ¡Comienza tu aventura hoy mismo.</p>
                 <div className="container row row-cols-lg-3 g-3 mx-auto mb-4">
-                    <div class=" ju card text-bg-dark border-0 ">
-                        <Link to="/caches-ubicacion" class="text-decoration-none">
-                            <img src={CachesUbicacion} class="card-img border-dark border border-1 " alt="..." />
+                    <div className=" ju card text-bg-dark border-0 ">
+                        <Link to="/caches-ubicacion" className="text-decoration-none">
+                            <img src={CachesUbicacion} className="card-img border-dark border border-1 " alt="..." />
                         </Link>
                     </div>
-                    <div class=" card text-bg-dark border-0 rounded-4">
-                        <Link to="/caches-dificultad" class="text-decoration-none">
-                            <img src={CachesDificultad} class="card-img border-dark border border-1 " alt="..." />
+                    <div className=" card text-bg-dark border-0 rounded-4">
+                        <Link to="/caches-dificultad" className="text-decoration-none">
+                            <img src={CachesDificultad} className="card-img border-dark border border-1 " alt="..." />
                         </Link>
                     </div>
-                    <div class=" card text-bg-dark border-0 ">
-                        <Link to="/caches-tamano" class="text-decoration-none">
-                            <img src={CachestTamano} class="card-img border border-dark border border-1 " alt="..." />
+                    <div className=" card text-bg-dark border-0 ">
+                        <Link to="/caches-tamano" className="text-decoration-none">
+                            <img src={CachestTamano} className="card-img border border-dark border border-1 " alt="..." />
                         </Link>
                     </div>
                 </div>
@@ -42,22 +42,22 @@ export const TiposDeCaches = () => {
                 <h2 className="text-center mb-3 mt-4">Accede a los Cachés más Populares entre Nuestra Comunidad</h2>
                 <p>¡No te pierdas la oportunidad de descubrir los tesoros escondidos de la comunidad! Selecciona los cachés más populares y explora los lugares más interesantes alrededor de ti. ¡Te aseguramos una aventura inolvidable llena de sorpresas y descubrimientos!</p>
                 <div className="container mb-5 row row-cols-lg-4 mx-auto gx-3">
-					{store.caches.map((caches) => {
-						return (
-							<div class="card" key={caches.id}>
-								<img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" class="card-img-top" alt="..." />
-								<div class="card-body">
-									<h5 class="card-title">{caches.city}</h5>
-									<p class="card-text">{caches.name}</p>
-									<Link to={"/perfil-cache/" + caches.id }className="text-decoration-none">
-									<a href="#" class="btn btn-primary">Ver Detalles</a>
-									</Link>
-								</div>
-							</div>
-						)
-					})}
+                    {store.caches.map((caches) => {
+                        return (
+                            <div className="card" key={caches.id}>
+                                <img src="https://thumbs.dreamstime.com/z/ciudad-de-mapas-con-ruta-gps-y-geo-navegaci%C3%B3n-para-entrega-en-la-calle-ubicaci%C3%B3n-app-map-road-town-park-river-cartograf%C3%ADa-229179316.jpg" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{caches.city}</h5>
+                                    <p className="card-text">{caches.name}</p>
+                                    <Link to={"/perfil-cache/" + caches.id} className="text-decoration-none">
+                                        <a href="#" className="btn btn-primary">Ver Detalles</a>
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    })}
 
-				</div>
+                </div>
 
             </div>
 

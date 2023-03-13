@@ -75,7 +75,7 @@ export const PerfilCache = () => {
         <div className="container">
             <div className="row ">
                 <div >
-                    <div class="btn-group container my-5" aria-label="Basic checkbox toggle button group" >
+                    <div className="btn-group container my-5" aria-label="Basic checkbox toggle button group" >
                         <label className="btn btn-outline-primary mx-auto " onClick={mostrarDatosCache}>Información Caché</label>
                         <label className="btn btn-outline-primary mx-auto " onClick={mostrarComentariosCache}> Comentarios y Fotos</label>
                         <label className="btn btn-outline-primary mx-auto " onClick={mostrarHallazgoCache}> Registra Tu Hallazgo</label>
@@ -96,7 +96,7 @@ export const PerfilCache = () => {
 
                             <div className="col-8" >
                                 <h3 className="text-start mb-5 mt-5 text-decoration-underline">Información</h3>
-                                <ul class="list-group mb-5">
+                                <ul className="list-group mb-5">
                                     <li className="list-group-item list-group-item-warning"><strong>Nombre:</strong> {perfilDetails.name}</li>
                                     <li className="list-group-item list-group-item-warning"><strong>Coordenadas:</strong> {perfilDetails.coordinates_x}/ {perfilDetails.coordinates_y} </li>
                                     <li className="list-group-item list-group-item-warning"><strong>Country:</strong> {perfilDetails.country}</li>
@@ -114,9 +114,9 @@ export const PerfilCache = () => {
                             <h2 className="text-center mb-5 mt-5">Comentarios y Fotos de Caché</h2>
                             <div className="text-center mb-5 mt-5 mb-3">
                                 <div >
-                                    <div class="" aria-label="Basic checkbox toggle button group g-0" >
-                                        <button type="button " class="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i class="fa-solid fa-comment"></i></button>
-                                        <button type="button " class="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i class="fa-solid fa-image"></i></button>
+                                    <div className="" aria-label="Basic checkbox toggle button group g-0" >
+                                        <button type="button " className="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i className="fa-solid fa-comment"></i></button>
+                                        <button type="button " className="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i className="fa-solid fa-image"></i></button>
                                     </div>
                                 </div>
 
@@ -141,19 +141,19 @@ export const PerfilCache = () => {
                         <div className="container">
                             <h2 className="text-center my-3">Registra Hallazgo de este Caché</h2>
                             <div className="row">
-                                <div class="mb-3">
-                                    <input class="form-control text-dark bg-opacity-10 border border-danger" type="text" value={`Caché ${perfilDetails.name}`} aria-label="Disabled input example" disabled readonly />
+                                <div className="mb-3">
+                                    <input className="form-control text-dark bg-opacity-10 border border-danger" type="text" value={`Caché ${perfilDetails.name}`} aria-label="Disabled input example" disabled readonly />
                                 </div>
-                                <div class="">
-                                    <textarea class="form-control bg-secondary  p-2 text-dark bg-opacity-10 border border-danger" id="exampleFormControlTextarea1" placeholder="Describe tu hallazgo" rows="3"></textarea>
+                                <div className="">
+                                    <textarea className="form-control bg-secondary  p-2 text-dark bg-opacity-10 border border-danger" id="exampleFormControlTextarea1" placeholder="Describe tu hallazgo" rows="3"></textarea>
                                 </div>
-                                <div class="mt-3">
-                                    <input class="form-control p-2 text-dark bg-opacity-10 border border-danger" type="file" id="formFileMultiple" multiple />
+                                <div className="mt-3">
+                                    <input className="form-control p-2 text-dark bg-opacity-10 border border-danger" type="file" id="formFileMultiple" multiple />
                                 </div>
                                 <div className="text-center">
                                     <div className="text-center my-4">
                                         <Link to="/enhorabuena">
-                                            <button type="button " class="btn btn-danger">Registrar el hallazgo de este Caché <i class="fa-regular fa-star"></i></button>
+                                            <button type="button " className="btn btn-danger">Registrar el hallazgo de este Caché <i className="fa-regular fa-star"></i></button>
                                         </Link>
                                     </div>
                                 </div>
@@ -164,23 +164,23 @@ export const PerfilCache = () => {
 
                         <div className="container">
                             <div className="text-center mb-5 mt-5 ">
-                                <div class="" aria-label="Basic checkbox toggle button group" >
-                                    <button type="button " class="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i class="fa-solid fa-comment"></i></button>
-                                    <button type="button " class="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i class="fa-solid fa-image"></i></button>
+                                <div className="" aria-label="Basic checkbox toggle button group" >
+                                    <button type="button " className="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i className="fa-solid fa-comment"></i></button>
+                                    <button type="button " className="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i className="fa-solid fa-image"></i></button>
                                 </div>
                             </div>
                             <h2 className="text-center my-3">Deja tu Comentario</h2>
                             <div className="container">
 
-                                <div class="my-3">
-                                    <textarea class="form-control bg-secondary  p-2 text-dark bg-opacity-10 border border-danger" id="exampleFormControlTextarea1" placeholder="Dejar Comentario" rows="3"></textarea>
+                                <div className="my-3">
+                                    <textarea className="form-control bg-secondary  p-2 text-dark bg-opacity-10 border border-danger" id="exampleFormControlTextarea1" placeholder="Dejar Comentario" rows="3"></textarea>
                                 </div>
-                                <div class=" d-flex justify-content-end my-2">
-                                    <button type="button" class="btn btn-primary btn-sm mx-1">Enviar</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
+                                <div className=" d-flex justify-content-end my-2">
+                                    <button type="button" className="btn btn-primary btn-sm mx-1">Enviar</button>
+                                    <button type="button" className="btn btn-danger btn-sm">Cancelar</button>
                                 </div>
                             </div>
-                            <img src={Comentario} class="card-img-top mb-3" alt="..." />
+                            <img src={Comentario} className="card-img-top mb-3" alt="..." />
 
                             <nav aria-label="Page navigation example mt-5" >
                                 <ul className="pagination justify-content-center">
@@ -200,9 +200,9 @@ export const PerfilCache = () => {
                     {selectedDiv5 ? (
                         <div className="container-fluid">
                             <div className="text-center mb-5 mt-5 ">
-                                <div class="" aria-label="Basic checkbox toggle button group" >
-                                    <button type="button " class="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i class="fa-solid fa-comment"></i></button>
-                                    <button type="button " class="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i class="fa-solid fa-image"></i></button>
+                                <div className="" aria-label="Basic checkbox toggle button group" >
+                                    <button type="button " className="btn btn-outline-dark mx-1" onClick={mostrarComentarios}>Comentarios <i className="fa-solid fa-comment"></i></button>
+                                    <button type="button " className="btn btn-outline-dark" onClick={mostrarFotosCache}>Fotos <i className="fa-solid fa-image"></i></button>
                                 </div>
                             </div>
                             <h2 className="text-center mb-5 mt-5">Galeria de fotos</h2>

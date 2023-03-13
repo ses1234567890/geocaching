@@ -87,17 +87,18 @@ export const NavbarNuevo = () => {
                             <ul className="dropdown-menu">
 
                                 <Link to="/mi-Perfil" className="text-decoration-none">
-                                    <li><a className="dropdown-item" href="#">Mi perfil</a></li>
+                                    <button className="dropdown-item" href="#">Mi perfil</button>
                                 </Link>
-                                <li className="nav-item mx-3 text-danger"
+
+                                <button
+                                    className="dropdown-item nav-item me-1 text-danger text-aling"
                                     onClick={async () => {
                                         if (await actions.logout()) {
                                             navigate("/");
                                         }
-                                    }}
-                                >
-                                    Logout
-                                </li>
+                                    }}>Logout</button>
+
+
                             </ul>
                         </div>
                         <li className="nav-item d-none d-lg-block ">
@@ -106,7 +107,7 @@ export const NavbarNuevo = () => {
                             </Link>
                         </li>
                         <li className="nav-item d-none d-lg-block">
-                            <button type="button" class="btn btn-light" onClick={mostrarBuscador}><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                            <button type="button" className="btn btn-light" onClick={mostrarBuscador}><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                         </li>
 
 
@@ -183,7 +184,7 @@ export const NavbarNuevo = () => {
                                     </li>
                                 </ul>
                             </li>
-                            
+
 
                             <li><hr className="dropdown-divider" /></li>
                             <li className="nav-item">
