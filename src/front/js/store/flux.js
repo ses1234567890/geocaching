@@ -30,7 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				);
 				const data = await response.json();
-				console.log(data)
 				if (response.ok) setStore({ userActive: true, currentUser: data.response, admin: data.response.is_admin });
 			},
 
@@ -52,7 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}),
 				});
 				const data = await response.json();
-				console.log(data);
 				if (response.ok) setStore({ currentUser: data.user });
 			},
 
