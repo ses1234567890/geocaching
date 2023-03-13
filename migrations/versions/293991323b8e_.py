@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 4423b864c19d
+Revision ID: 293991323b8e
 Revises: 
-Create Date: 2023-02-10 15:37:55.336995
+Create Date: 2023-03-13 15:30:27.518653
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4423b864c19d'
+revision = '293991323b8e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,13 +26,14 @@ def upgrade():
     sa.Column('country', sa.String(length=255), nullable=True),
     sa.Column('city', sa.String(length=255), nullable=True),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('images', sa.String(length=255), nullable=True),
+    sa.Column('profile_image_url', sa.String(length=255), nullable=True),
     sa.Column('ig', sa.String(length=255), nullable=True),
     sa.Column('fb', sa.String(length=255), nullable=True),
     sa.Column('twitter', sa.String(length=255), nullable=True),
     sa.Column('password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('profile_image_url')
     )
     op.create_table('blog',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -48,14 +49,17 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('is_approved', sa.Boolean(), nullable=False),
+    sa.Column('is_declined', sa.Boolean(), nullable=False),
+    sa.Column('is_pending', sa.Boolean(), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('country', sa.String(length=255), nullable=False),
+    sa.Column('state', sa.String(length=255), nullable=False),
     sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('postal_code', sa.String(length=255), nullable=False),
-    sa.Column('coordinates_y', sa.Float(), nullable=False),
-    sa.Column('coordinates_x', sa.Float(), nullable=False),
-    sa.Column('difficulty', sa.Float(), nullable=False),
-    sa.Column('size', sa.Float(), nullable=False),
+    sa.Column('coordinates_y', sa.Float(), nullable=True),
+    sa.Column('coordinates_x', sa.Float(), nullable=True),
+    sa.Column('difficulty', sa.String(length=255), nullable=False),
+    sa.Column('size', sa.String(length=255), nullable=False),
     sa.Column('qr_url', sa.String(length=255), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['user.id'], ),
