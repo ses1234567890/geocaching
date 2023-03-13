@@ -72,7 +72,10 @@ export const Register = () => {
 				<button
 					className="btn btn-success btn-lg"
 					onClick={() => {
-						sendRegisterCredential()
+						const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+						if (email && email.match(isValidEmail)) {
+							sendRegisterCredential();
+						}
 					}}
 				>
 					Register
