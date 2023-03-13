@@ -546,6 +546,7 @@ export const MiPerfil = () => {
                     {showDiv13 ? (
                         <div>
                             <h2 className="text-center mb-5">Admin Panel</h2>
+                            <h3 className="text-center mb-5">Nuevos caches</h3>
                             <div className="container mb-5 row row-cols-lg-2 mx-auto gx-3 text-center">
                                 {pendingCaches.map((caches) => {
                                     return (

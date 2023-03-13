@@ -9,6 +9,8 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 import cloudinary
 import cloudinary.uploader
+import re
+import hashlib
 
 api = Blueprint('api', __name__)
 
@@ -16,9 +18,19 @@ api = Blueprint('api', __name__)
 def user_login():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
-    user = User.query.filter_by(email= body_email, password=body_password).first()
-    if not user:
-        return jsonify({"Error": "Invalid credentials"}), 401
+    user = User.query.filter_by(email=body_email).first()
+    
+    # Find the user with the matching username
+    # if not user:
+    #     return jsonify({"Error": "Invalid credentials"}), 401
+    if user is None:
+        return jsonify({"response": "Invalid username or password."}), 401
+    
+     # Hash the entered password and compare to the stored hash
+    hashed_password = hashlib.sha256(body_password.encode('utf-8')).hexdigest()
+    if hashed_password != user.password:
+        return jsonify({"response": "Invalid username or password."}), 401
+
     token = create_access_token(identity=user.id)
     return jsonify({"response": "Hola", "token": token}), 200
     
@@ -111,10 +123,37 @@ def get_details(id):
 def user_register():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
+    body_username = request.json.get("name")
     user_already_exist = User.query.filter_by(email= body_email).first()
+    
+    # Check if user already exists
     if user_already_exist:
         return jsonify({"response": "Email already used"}), 300
-    new_user = User(email=body_email, password=body_password)
+
+    # Check that all fields are present in the request
+    if not body_username or not body_email or not body_password:
+        return jsonify({"response": "Username, email, and password are required."}), 300
+    
+    # Check that the email is in the correct format
+    if not re.match(r'^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$', body_email):
+        return jsonify({'response': "Invalid email address."}), 300
+
+    # Check password requirements
+    if len(body_password) < 8:
+        return jsonify({"response": "Password must be at least 8 characters."}), 300
+    if not re.search(r'[A-Z]', body_password):
+        return jsonify({"response": "Password must include at least one capital letter."}), 300
+    if not re.search(r'[a-z]', body_password):
+        return jsonify({"response": "Password must include at least one lowercase letter."}), 300
+    if not re.search(r'\d', body_password):
+        return jsonify({"response": "Password must include at least one number."}), 300
+    if not re.search(r'[^\w\s]', body_password):
+        return jsonify({"response": "Password must include at least one special character."}), 300
+
+    # Hash the password using SHA-256
+    hashed_password = hashlib.sha256(body_password.encode('utf-8')).hexdigest()
+
+    new_user = User(email=body_email, password=hashed_password, name=body_username)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"response": "User registered successfully"}), 200   
